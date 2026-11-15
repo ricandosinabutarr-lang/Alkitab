@@ -375,25 +375,25 @@
   // URL Web App Google Apps Script (/exec) yang sudah terhubung ke Spreadsheet Anda:
   const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyDIgBIAZjGW-ihiW4jn_YLoUcAB1Y8GCs-ABDTlKS0S2LoaC4OeefhtAGidUJwBb9UIQ/exec";
 
-  // Daftar 17 Peserta Katekisasi (Dilindungi SHA-256 Hash untuk PIN: 202601 s/d 202617)
+  // Daftar 17 Peserta Katekisasi (SHA-256 Hash Valid untuk PIN: 202601 s/d 202617)
   const PARTICIPANTS = [
-    { id: "P01", name: "Abednego Simbolon", pinHash: "5069a3f8493c9c2429a33d7ec1dbda2db260c4f8f7be7c8942d810ed00db0f31" },
-    { id: "P02", name: "Andro Hesekiel Hamonangan Silaen", pinHash: "65a6e7e6de9c3bc294d42b144893860587a2ab87b5f3548ed48511622fd04804" },
-    { id: "P03", name: "Angelqhy Hamamean Bagasdini Nainggolan", pinHash: "b46049f1f581eb0c154424da9ed0520bf1d60e12cb6060b2c598d78df5f97178" },
-    { id: "P04", name: "Elin Schiko Sipahutar", pinHash: "fb0813537d08d3be7d17ef222014c2155644e4a520bd43377ffebbd41135bc7d" },
-    { id: "P05", name: "Ferdy Silaen", pinHash: "9f9c37218bc0be546958e33368aa1a86d78aeccfd3bc6da2784830b599c8011c" },
-    { id: "P06", name: "Gracela Tobing", pinHash: "96e62ff7c57227f1d9714964f7848b787696d38f704f58f232c22cf97a5e9cd2" },
-    { id: "P07", name: "Hizkia Natanael Pardosi", pinHash: "8bb68e4ed0f9eb6b1debd9c10bc55cdbcbfbbcf86d37523a83024212650c0156" },
-    { id: "P08", name: "Jesica Immanuela Silitonga", pinHash: "194420e43ed219683938be5ff1fa68923ed79f0b17ae24685826846bb463752c" },
-    { id: "P09", name: "Jhon Daniel Haloho", pinHash: "f0dc32a60b071190ba497c1e6ef12c693bc26f37758a6d6be9b9b9bb7ff8fb55" },
-    { id: "P10", name: "Josua Febriano Makmur Silaen", pinHash: "d17bd09172ab28ba4d23c1b28551f36ef250d26be0724c58c4b14b3ccbc2de04" },
-    { id: "P11", name: "Mikansia Yemima Sianturi", pinHash: "7f4d623b2c66a41b25f45cf55d694c19e10e3f273c3dc97e3ab0827bd2700682" },
-    { id: "P12", name: "Nicholas Arnoldy Munthe", pinHash: "bb90be222536bc34f6824fd4a9ed07e87b9e1e2ff1a111a2887fd922f1aa8663" },
-    { id: "P13", name: "Rivaldo Firman Lubis", pinHash: "c6724c0e8513c86aa28c55fb52f2f2b740363f2a0faaa1c4f9c42466ba638f73" },
-    { id: "P14", name: "Silvia Vanessa Asima Sitorus", pinHash: "37fb1f5bb4825150fc6553ae7720cb0d8c1860f8f2bfbc9f90e53d893b7b0e83" },
-    { id: "P15", name: "Stevani Yulianthy Sihotang", pinHash: "9e79d4e3488a1339eb776ba78be6a21599c7222b26e5cd5f8eb7a3a9d7f56cc8" },
-    { id: "P16", name: "Yosef Aristovel Siagian", pinHash: "d8997e6f40301872edaa1699aa92fd9d80025a340f258a082dc7e7e061e565e3" },
-    { id: "P17", name: "Zhyo Hutabarat", pinHash: "139fb4fa07407c7e808f90f6f8e9f883d82b71cb0a1983d9c5f0878a5d8e2524" }
+    { id: "P01", name: "Abednego Simbolon", pinHash: "9f36d8b555d70dad5cdf620ac2a8fc36f6ffc0a44a58fb1ba600bd230b4ee660" },
+    { id: "P02", name: "Andro Hesekiel Hamonangan Silaen", pinHash: "4b058b90b7acc6b114f055c7c2c41fd3794cd96df95bdc6d72a9d550152670e7" },
+    { id: "P03", name: "Angelqhy Hamamean Bagasdini Nainggolan", pinHash: "0994a71b9023280041ab0f8aae752721c686a9c815ad7bcc5ebc81fcbc66ab0a" },
+    { id: "P04", name: "Elin Schiko Sipahutar", pinHash: "0d89db834202eddee0cf35f07bdbb6840de449295316166bf2b820ae6d90a0fa" },
+    { id: "P05", name: "Ferdy Silaen", pinHash: "dc091e2936acae646078be694deac4d22a533e19cdd67be2efa6d812fcc41184" },
+    { id: "P06", name: "Gracela Tobing", pinHash: "95af67d61da0e73b5affb6f38ffb5951fc897d8acacd85dd4b4ea5d765f65a0c" },
+    { id: "P07", name: "Hizkia Natanael Pardosi", pinHash: "a89879152a0418eaa00b25eb33278cfa3d866e92e2c8ff0ac2f3395452549bc6" },
+    { id: "P08", name: "Jesica Immanuela Silitonga", pinHash: "a1c006f8a56662cdaedb396a57101cb44c8ff0a3bc68e480c689d43e112295e3" },
+    { id: "P09", name: "Jhon Daniel Haloho", pinHash: "8ef010864e74211363dbf0be43457a9869da3c2f715e31620ecbf2e37c826208" },
+    { id: "P10", name: "Josua Febriano Makmur Silaen", pinHash: "eff3fdd3f486565f12baf0df16bd88f07f5652e3489aa047b92d78c57b9cac8c" },
+    { id: "P11", name: "Mikansia Yemima Sianturi", pinHash: "797230c2ff79ea02acb5539c2a1759f53170dec0756dd339783c68ad545418b4" },
+    { id: "P12", name: "Nicholas Arnoldy Munthe", pinHash: "0ece2784eec73d4d46899f5f57dabb898323c67746e51f7ba10b171a7dd1c7ef" },
+    { id: "P13", name: "Rivaldo Firman Lubis", pinHash: "60d0f0c4b8543332d8c376a48a8d42488391674898cfb4002cecd784c88c7dd6" },
+    { id: "P14", name: "Silvia Vanessa Asima Sitorus", pinHash: "6c4af33f5c78fd6066f42a885f3fb05ec18fde2c809e177879ba73d904cb2a30" },
+    { id: "P15", name: "Stevani Yulianthy Sihotang", pinHash: "72aa5d655b9974c8ca948623f07622cbf474f6f6ef78c99753d41f2152140486" },
+    { id: "P16", name: "Yosef Aristovel Siagian", pinHash: "eefd20ff5edb2182ff2bd7fe0e4a687b1a14586dfcd767ccf9631ac8454d26c0" },
+    { id: "P17", name: "Zhyo Hutabarat", pinHash: "9f5a94cf16d7a37e5f91e69931c15834c6a6a4b7cc38c9478ff977ff4ea695a6" }
   ];
 
   // =========================================================================
@@ -516,6 +516,12 @@
 
     if (!pid || !pin) {
       errEl.textContent = "Silakan pilih nama peserta dan masukkan PIN 6-digit.";
+      errEl.classList.remove("hidden");
+      return;
+    }
+
+    if (!window.crypto || !window.crypto.subtle) {
+      errEl.textContent = "Harap buka aplikasi melalui tautan HTTPS GitHub Pages agar sistem keamanan PIN berfungsi.";
       errEl.classList.remove("hidden");
       return;
     }
@@ -741,131 +747,3 @@
       document.getElementById("retakeBtn").classList.add("hidden");
       document.getElementById("captureBtn").classList.remove("hidden");
     } catch (err) {
-      alert("Gagal mengakses kamera. Pastikan Anda memberikan izin kamera pada browser.");
-    }
-  }
-
-  function stopCamera() {
-    if (cameraStream) {
-      cameraStream.getTracks().forEach(t => t.stop());
-      cameraStream = null;
-    }
-  }
-
-  function capturePhoto() {
-    const video = document.getElementById("videoPreview");
-    const canvas = document.getElementById("snapshotCanvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = video.videoWidth || 640;
-    canvas.height = video.videoHeight || 480;
-
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    const item = READING_PLAN.find(p => p.day === selectedDay);
-    const nowText = new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" }) + " WIB";
-
-    ctx.fillStyle = "rgba(15, 23, 42, 0.78)";
-    ctx.fillRect(0, canvas.height - 82, canvas.width, 82);
-
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 16px sans-serif";
-    ctx.fillText(`📖 ${currentUser.name} (${currentUser.id})`, 14, canvas.height - 56);
-
-    ctx.fillStyle = "#fbbf24";
-    ctx.font = "bold 14px sans-serif";
-    ctx.fillText(`Hari ke-${item.day}: ${item.passage}`, 14, canvas.height - 34);
-
-    ctx.fillStyle = "#cbd5e1";
-    ctx.font = "12px sans-serif";
-    ctx.fillText(`Terverifikasi: ${nowText}`, 14, canvas.height - 14);
-
-    capturedDataURL = canvas.toDataURL("image/jpeg", 0.8);
-
-    stopCamera();
-    video.classList.add("hidden");
-    canvas.classList.remove("hidden");
-    document.getElementById("captureBtn").classList.add("hidden");
-    document.getElementById("retakeBtn").classList.remove("hidden");
-    document.getElementById("photoSavedBadge").classList.remove("hidden");
-    document.getElementById("downloadReceiptBtn").classList.remove("hidden");
-
-    checkFormValidity();
-  }
-
-  function downloadWatermarkImage() {
-    if (!capturedDataURL) return;
-    const a = document.createElement("a");
-    a.href = capturedDataURL;
-    a.download = `Bukti_Baca_H${selectedDay}_${currentUser.name.replace(/\s+/g, "_")}.jpg`;
-    a.click();
-  }
-
-  // =========================================================================
-  // 8. VALIDASI & KIRIM LAPORAN KE GOOGLE SHEETS + DRIVE
-  // =========================================================================
-  document.getElementById("keyVerseInput").addEventListener("input", checkFormValidity);
-  document.getElementById("reflectionInput").addEventListener("input", checkFormValidity);
-
-  function checkFormValidity() {
-    const verse = document.getElementById("keyVerseInput").value.trim();
-    const refl = document.getElementById("reflectionInput").value.trim();
-    const timeOk = timerSecondsLeft <= 0;
-    const textOk = verse.length >= 5 && refl.length >= 20;
-    const photoOk = Boolean(capturedDataURL);
-
-    document.getElementById("submitReadingBtn").disabled = !(timeOk && textOk && photoOk);
-  }
-
-  async function submitDailyReading() {
-    const submitBtn = document.getElementById("submitReadingBtn");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "⏳ Mengirim Laporan & Foto...";
-
-    const item = READING_PLAN.find(p => p.day === selectedDay);
-    const verse = document.getElementById("keyVerseInput").value.trim();
-    const reflection = document.getElementById("reflectionInput").value.trim();
-    const timestamp = new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
-
-    // Simpan ke penyimpanan lokal perangkat
-    const progress = getUserProgress();
-    progress[selectedDay] = {
-      completedAt: timestamp,
-      passage: item.passage,
-      verse,
-      reflection
-    };
-    saveUserProgress(progress);
-
-    // Kirim data & foto base64 ke Google Apps Script (Google Sheets + Drive)
-    if (GOOGLE_SHEETS_WEBHOOK_URL) {
-      try {
-        await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            participantId: currentUser.id,
-            participantName: currentUser.name,
-            day: item.day,
-            date: item.dateISO,
-            passage: item.passage,
-            verse,
-            reflection,
-            timestamp,
-            photoBase64: capturedDataURL
-          })
-        });
-      } catch (e) {
-        console.warn("Gagal mengirim log ke Google Sheets:", e);
-      }
-    }
-
-    alert(`Terima kasih ${currentUser.name}! Bacaan Hari ke-${item.day} (${item.passage}) berhasil dicatat dan dikirim.`);
-    updateStats();
-    selectDay(selectedDay);
-  }
-</script>
-
-</body>
-</html>
