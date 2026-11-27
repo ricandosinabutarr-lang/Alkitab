@@ -17,7 +17,39 @@
       --gold: #c49a55;
       --soft: #eaf0e9;
       --danger: #b91c1c;
+      --top-grad: linear-gradient(115deg, #102b26, #1d4a3e);
+      --hero-grad: linear-gradient(120deg, #173d34, #2b6653);
       --shadow: 0 18px 55px rgba(22, 49, 41, 0.08);
+    }
+
+    /* Tema Kreasi Profil Peserta */
+    body.accent-ocean {
+      --green: #1e3a8a;
+      --green2: #2563eb;
+      --soft: #eff6ff;
+      --top-grad: linear-gradient(115deg, #0f172a, #1e3a8a);
+      --hero-grad: linear-gradient(120deg, #1e3a8a, #2563eb);
+    }
+    body.accent-emerald {
+      --green: #065f46;
+      --green2: #059669;
+      --soft: #ecfdf5;
+      --top-grad: linear-gradient(115deg, #022c22, #065f46);
+      --hero-grad: linear-gradient(120deg, #065f46, #059669);
+    }
+    body.accent-sunset {
+      --green: #9a3412;
+      --green2: #c2410c;
+      --soft: #fff7ed;
+      --top-grad: linear-gradient(115deg, #431407, #9a3412);
+      --hero-grad: linear-gradient(120deg, #9a3412, #c2410c);
+    }
+    body.accent-royal {
+      --green: #581c87;
+      --green2: #7e22ce;
+      --soft: #faf5ff;
+      --top-grad: linear-gradient(115deg, #2e1065, #581c87);
+      --hero-grad: linear-gradient(120deg, #581c87, #7e22ce);
     }
 
     body.dark {
@@ -45,9 +77,32 @@
     button:disabled { opacity: 0.55; cursor: not-allowed; }
     .hidden { display: none !important; }
 
+    /* Mentor Impersonation Bar */
+    .impersonate-bar {
+      background: #9f7531;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+    .impersonate-bar button {
+      background: #102b26;
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     /* Top Bar */
     .top {
-      background: linear-gradient(115deg, #102b26, #1d4a3e);
+      background: var(--top-grad);
       color: #fff;
       padding: 18px max(22px, calc((100vw - 1180px) / 2));
       display: flex;
@@ -111,7 +166,7 @@
     }
 
     /* Main Workspace Layout */
-    .layout { display: grid; grid-template-columns: 230px 1fr; gap: 22px; }
+    .layout { display: grid; grid-template-columns: 235px 1fr; gap: 22px; }
     .side {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -148,7 +203,7 @@
     /* Hero Banner */
     .content { min-width: 0; }
     .hero {
-      background: linear-gradient(120deg, #173d34, #2b6653);
+      background: var(--hero-grad);
       color: #fff;
       border-radius: 22px;
       padding: 26px 28px;
@@ -208,6 +263,39 @@
       letter-spacing: 0.04em;
     }
     body.dark .pill { color: #d6e4dc; }
+
+    /* Creative Profile Studio */
+    .profile-card-preview {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .avatar-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: var(--hero-grad);
+      color: #fff;
+      font-size: 32px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 16px; }
+    .swatch-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--line);
+    }
+    .swatch-btn.active { box-shadow: 0 0 0 2.5px var(--gold); transform: scale(1.1); }
 
     /* Reading Box & Timer */
     .reading {
@@ -278,7 +366,7 @@
       font-weight: 700;
     }
     body.dark .secondary { color: #edf3ed; }
-    .btn-sm { padding: 7px 12px; font-size: 12px; }
+    .btn-sm { padding: 6px 11px; font-size: 12px; }
     .actions { display: flex; gap: 9px; flex-wrap: wrap; }
 
     .field {
@@ -378,6 +466,7 @@
       padding: 11px 9px;
       border-bottom: 1px solid var(--line);
       text-align: left;
+      vertical-align: middle;
     }
     table.monitor th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
     .badge-status {
@@ -391,6 +480,18 @@
     .st-live { background: #fef3c7; color: #92400e; }
     .st-idle { background: var(--soft); color: var(--muted); }
     .st-warn { background: #fee2e2; color: #991b1b; }
+
+    .photo-link {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--green);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    body.dark .photo-link { color: var(--gold); }
 
     .view { display: none; }
     .view.active { display: block; }
@@ -418,17 +519,23 @@
 </head>
 <body>
 
+  <!-- BANNER MODE PENGAJAR MEMBUKA AKUN PESERTA -->
+  <div id="impersonateBanner" class="impersonate-bar hidden">
+    <span id="impersonateLabel">🔑 Mode Akses Penuh Pembimbing: Anda sedang membuka akun peserta.</span>
+    <button type="button" onclick="exitStudentImpersonation()">← Kembali ke Ruang Pembimbing</button>
+  </div>
+
   <!-- TOP HEADER -->
   <header class="top">
     <div class="brand">
-      <div class="mark">✝</div>
+      <div class="mark" id="topBrandIcon">✝</div>
       <div>
         <strong>ALKITAB</strong>
         <small>PERJALANAN FIRMAN · 180 HARI</small>
       </div>
     </div>
     <div class="top-actions">
-      <button class="iconbtn" id="themeBtn" aria-label="Ganti tema">◐ <span class="label">Tema</span></button>
+      <button class="iconbtn" id="themeBtn" aria-label="Ganti tema">◐ <span class="label">Mode Gelap</span></button>
       <button class="iconbtn hidden" id="logoutBtn" onclick="handleLogout()">↪ <span class="label">Keluar</span></button>
     </div>
   </header>
@@ -478,6 +585,7 @@
         <nav class="nav" aria-label="Navigasi utama">
           <button class="active" data-view="home"><i class="ico">⌂</i>Ringkasan</button>
           <button data-view="reading"><i class="ico">▤</i>Bacaan & Jurnal</button>
+          <button data-view="profile"><i class="ico">✦</i>Ruang kreasi & profil</button>
           <button data-view="progress"><i class="ico">▥</i>Perjalanan 180 hari</button>
           <button data-view="community"><i class="ico">◎</i>Ruang komunitas</button>
           <button data-view="curhat"><i class="ico">♧</i>Ruang curhat privat</button>
@@ -542,12 +650,15 @@
 
             <div class="panel">
               <div class="panel-head">
-                <h3>Renungan singkat</h3>
-                <span class="pill">FIRMAN</span>
+                <h3>Ayat pegangan pribadi</h3>
+                <span class="pill" id="homeAvatarPill">🕊️ PROFIL</span>
               </div>
               <div class="quote" id="personalMottoDisplay">
                 “Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.”
                 <small>Mazmur 119:105 · TB</small>
+              </div>
+              <div style="margin-top:14px;">
+                <button class="secondary btn-sm" onclick="showView('profile')">✦ Ubah Kreasi Profil</button>
               </div>
             </div>
           </div>
@@ -569,9 +680,12 @@
               <span class="pill">PERSIAPAN</span>
             </div>
             <p class="muted">
-              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat memasang pengingat kalender harian di tab <strong>Perjalanan 180 hari</strong>.
+              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat berkreasi di <strong>Ruang kreasi & profil</strong> atau memasang pengingat kalender.
             </p>
-            <button class="secondary" onclick="showView('progress')">Atur Pengingat Kalender →</button>
+            <div class="actions">
+              <button class="primary" onclick="showView('profile')">✦ Buka Ruang Kreasi Profil</button>
+              <button class="secondary" onclick="showView('progress')">Atur Pengingat Kalender →</button>
+            </div>
           </div>
 
           <div id="readingWorkCard" class="panel">
@@ -587,7 +701,7 @@
             </div>
 
             <div id="alreadyDoneNotice" class="notice success hidden">
-              ✅ Puji Tuhan! Bacaan dan jurnal refleksi hari ini sudah selesai dan tercatat ke sistem pembimbing.
+              ✅ Puji Tuhan! Bacaan, jurnal refleksi, dan foto bukti hari ini sudah tersimpan ke Google Sheets & Google Drive.
             </div>
 
             <!-- Focus Timer -->
@@ -617,10 +731,10 @@
             <div class="hint-lock">🔒 Ketik manual — tidak diperbolehkan copy-paste.</div>
 
             <!-- Live Camera Check-in -->
-            <label class="formlabel">3. Foto bukti membaca Alkitab (Kamera langsung + stempel waktu)</label>
+            <label class="formlabel">3. Foto bukti membaca Alkitab (Wajib untuk tersimpan ke Google Sheets & Drive)</label>
             <div class="cam-box">
               <p class="muted" style="font-size:12.5px; margin:0 0 10px;">
-                Ambil foto diri bersama Alkitab yang sedang dibaca. Stempel Nama, Pasal, dan Jam WIB otomatis terpasang.
+                Ambil foto diri bersama Alkitab yang sedang dibaca. Stempel Nama, Pasal, dan Jam WIB otomatis terpasang dan diunggah ke Google Sheets.
               </p>
               <div class="actions" style="justify-content:center;">
                 <button type="button" class="secondary btn-sm" id="openCamBtn" onclick="startCamera()">📷 Buka Kamera</button>
@@ -630,22 +744,77 @@
               <video id="videoPreview" class="hidden" autoplay playsinline></video>
               <canvas id="snapshotCanvas" class="hidden"></canvas>
               <div id="photoSavedBadge" class="hidden" style="margin-top:10px; font-size:12.5px; color:var(--green); font-weight:700;">
-                ✔️ Foto bukti dengan stempel waktu berhasil diambil!
+                ✔️ Foto bukti dengan stempel waktu siap dikirim ke Google Sheets!
               </div>
             </div>
 
             <div class="actions">
               <button class="primary" id="submitReadingBtn" style="flex:1;" onclick="submitDailyReading()" disabled>
-                ✅ Konfirmasi Selesai Membaca
+                ✅ Konfirmasi Selesai Membaca & Kirim Foto
               </button>
               <button class="secondary hidden" id="downloadReceiptBtn" onclick="downloadWatermarkImage()">
-                ⬇️ Unduh Foto Bukti
+                ⬇️ Unduh Salinan Foto
               </button>
             </div>
           </div>
         </section>
 
-        <!-- VIEW 3: PERJALANAN 180 HARI, MOTTO & KALENDER PENGINGAT -->
+        <!-- VIEW 3: RUANG KREASI & PROFIL PESERTA -->
+        <section class="view" id="profile">
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Ruang kreasi & profil peserta</h3>
+              <span class="pill">TAMPILAN PRIBADI</span>
+            </div>
+            <p class="muted" style="font-size:13px;">
+              Sesuaikan ikon identitas, nuansa warna ruang bacaan, dan ayat pegangan iman Anda. Perubahan tersimpan otomatis ke profil Anda.
+            </p>
+
+            <div class="profile-card-preview">
+              <div class="avatar-badge" id="profilePreviewAvatar">🕊️</div>
+              <div>
+                <div class="eyebrow" id="profilePreviewId">PESERTA KATEKISASI</div>
+                <strong style="font: 600 20px Georgia, serif; display:block;" id="profilePreviewName">Nama Peserta</strong>
+                <span class="muted" style="font-size:13px; font-style:italic;" id="profilePreviewMotto">“Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.”</span>
+              </div>
+            </div>
+
+            <label class="formlabel">1. Pilih Nuansa Warna Ruang Bacaan</label>
+            <div class="swatch-row" id="accentSwatches">
+              <button type="button" class="swatch-btn active" data-accent="forest" style="background:#173d34;" title="Hijau Hutan Klasik" onclick="selectAccentTheme('forest')"></button>
+              <button type="button" class="swatch-btn" data-accent="ocean" style="background:#1e3a8a;" title="Biru Samudra" onclick="selectAccentTheme('ocean')"></button>
+              <button type="button" class="swatch-btn" data-accent="emerald" style="background:#065f46;" title="Hijau Zamrud" onclick="selectAccentTheme('emerald')"></button>
+              <button type="button" class="swatch-btn" data-accent="sunset" style="background:#9a3412;" title="Senja Hangat" onclick="selectAccentTheme('sunset')"></button>
+              <button type="button" class="swatch-btn" data-accent="royal" style="background:#581c87;" title="Ungu Kerajaan" onclick="selectAccentTheme('royal')"></button>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 150px 1fr; gap:12px;">
+              <div>
+                <label class="formlabel" for="avatarSelect">2. Ikon Identitas</label>
+                <select class="field" id="avatarSelect" onchange="previewProfileLive()">
+                  <option value="🕊️">🕊️ Merpati</option>
+                  <option value="📖">📖 Alkitab</option>
+                  <option value="✝️">✝️ Salib</option>
+                  <option value="🌿">🌿 Ranting</option>
+                  <option value="🔥">🔥 Api Roh</option>
+                  <option value="⭐">⭐ Bintang</option>
+                  <option value="🦁">🦁 Singa</option>
+                  <option value="🐑">🐑 Domba</option>
+                </select>
+              </div>
+              <div>
+                <label class="formlabel" for="mottoInput">3. Ayat Pegangan / Motto Iman Pribadi</label>
+                <input class="field" id="mottoInput" maxlength="120" oninput="previewProfileLive()" placeholder="Tulis ayat favorit atau motto iman Anda..." />
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="primary" id="saveProfileBtn" onclick="saveProfileCustomization()">💾 Simpan Kreasi Profil</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: PERJALANAN 180 HARI & KALENDER PENGINGAT -->
         <section class="view" id="progress">
           <div class="panel">
             <div class="panel-head">
@@ -682,19 +851,9 @@
               <button type="button" class="primary" onclick="activateCalendarReminder()">📅 Pasang Pengingat Kalender</button>
             </div>
           </div>
-
-          <div class="panel">
-            <div class="panel-head">
-              <h3>Ayat pegangan pribadi</h3>
-              <span class="pill">PROFIL</span>
-            </div>
-            <label class="formlabel" for="mottoInput">Tulis ayat atau motto iman yang ditampilkan di Ringkasan Anda</label>
-            <input class="field" id="mottoInput" maxlength="120" placeholder="Contoh: Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." />
-            <button type="button" class="secondary" onclick="saveProfileMotto()">💾 Simpan Ayat Pegangan</button>
-          </div>
         </section>
 
-        <!-- VIEW 4: RUANG KOMUNITAS (DISKUSI KELOMPOK) -->
+        <!-- VIEW 5: RUANG KOMUNITAS (DISKUSI KELOMPOK) -->
         <section class="view" id="community">
           <div class="panel">
             <div class="panel-head">
@@ -722,7 +881,7 @@
           </div>
         </section>
 
-        <!-- VIEW 5: RUANG CURHAT PRIVAT -->
+        <!-- VIEW 6: RUANG CURHAT PRIVAT -->
         <section class="view" id="curhat">
           <div class="panel">
             <div class="panel-head">
@@ -752,14 +911,14 @@
     </div>
 
     <!-- =================================================================== -->
-    <!-- DASHBOARD PEMBIMBING (RUANG PEMBIMBING)                             -->
+    <!-- DASHBOARD PEMBIMBING (RUANG PEMBIMBING + AKSES PENUH AKUN PESERTA)  -->
     <!-- =================================================================== -->
     <div id="mentorDashboard" class="hidden">
       <div class="hero" style="margin-bottom:18px;">
         <div>
-          <div class="eyebrow">RUANG PEMBIMBING · PENDAMPINGAN</div>
-          <h2>Pemantauan Langsung & Pendampingan Peserta</h2>
-          <p>Pantau waktu sesi bacaan harian ke-17 peserta secara langsung dan tanggapi curhat maupun diskusi kelompok.</p>
+          <div class="eyebrow">RUANG PEMBIMBING · PENDAMPINGAN & AKSES PENUH</div>
+          <h2>Pemantauan Langsung & Kontrol Akun Peserta</h2>
+          <p>Pantau sesi baca harian, buka foto bukti di Google Drive, atau masuk langsung ke akun peserta mana pun untuk meninjau profil dan capaiannya.</p>
         </div>
         <div>
           <button class="iconbtn" onclick="loadTeacherMonitorData()">🔄 Segarkan Data</button>
@@ -768,22 +927,23 @@
 
       <div class="panel">
         <div class="panel-head">
-          <h3>Status sesi baca peserta hari ini</h3>
+          <h3>Daftar 17 Peserta, Foto Bukti & Akses Akun</h3>
           <span class="pill" id="mentorDateBadge">HARI INI</span>
         </div>
         <div class="table-wrap">
           <table class="monitor">
             <thead>
               <tr>
-                <th>ID & Nama Peserta</th>
+                <th>Peserta & Profil</th>
                 <th>Status Sesi</th>
-                <th>Mulai Baca</th>
-                <th>Selesai Baca</th>
+                <th>Waktu (Mulai / Selesai)</th>
+                <th>Foto Bukti GS</th>
                 <th>Capaian</th>
+                <th>Akses Akun</th>
               </tr>
             </thead>
             <tbody id="teacherMonitorBody">
-              <tr><td colspan="5">Memuat data pemantauan...</td></tr>
+              <tr><td colspan="6">Memuat data pemantauan...</td></tr>
             </tbody>
           </table>
         </div>
@@ -811,7 +971,7 @@
     const TOTAL_DAYS = 180;
     const MIN_READ_SECONDS = 300;
     const APP_PUBLIC_URL = "https://ricandosinabutarr-lang.github.io/Baca-Alkitab/";
-    const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzMOzdt3I_cfFiZ0paZnd9M_xV4xVHEKZt847JkogZbfEpE7Enejh16JtNV20zlCtlIyg/exec";
+    const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwEQQx-G8tcO0DBL93JRo305pI5CrTS-Ov8jD7xo0_0GxE7IScja33-JV1_7cM6m5trfQ/exec";
 
     const ACCOUNTS = [
       { id: "ADMIN", role: "teacher", name: "👨‍🏫 Pengajar / Pembina Katekisasi", pinHash: "4a20678d7125244ada7cf0f8b03ef8256fcedeaf7a30b0daf4e05a9e995d367e" },
@@ -887,6 +1047,8 @@
     const READING_PLAN = build180DayPlan();
 
     let currentUser = null;
+    let mentorOriginalUser = null;
+    let selectedAccentTheme = "forest";
     let activeDayNum = 1;
     let sessionStartTimeWIB = null;
     let timerSecondsLeft = MIN_READ_SECONDS;
@@ -899,7 +1061,7 @@
     let pasteWarningTimeout = null;
 
     // =========================================================================
-    // 2. INISIALISASI UI & TEMA EDITORIAL
+    // 2. INISIALISASI UI & NAVIGASI
     // =========================================================================
     const nowInit = new Date();
     document.getElementById("todayDate").textContent = nowInit.toLocaleDateString("id-ID", {
@@ -933,7 +1095,7 @@
     }
 
     // =========================================================================
-    // 3. PENYIMPANAN LOKAL & MOTTO PRIBADI
+    // 3. RUANG KREASI PROFIL & SINKRONISASI GOOGLE SHEETS
     // =========================================================================
     function getUserProgress() {
       if (!currentUser) return {};
@@ -947,29 +1109,109 @@
     }
 
     function getUserProfilePrefs() {
-      if (!currentUser) return { motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
+      if (!currentUser) return { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
       const raw = localStorage.getItem(`bible_profile_${currentUser.id}`);
-      return raw ? JSON.parse(raw) : { motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
+      return raw ? JSON.parse(raw) : { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
     }
 
-    function saveProfileMotto() {
-      if (!currentUser) return;
-      const prefs = getUserProfilePrefs();
-      prefs.motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
-      localStorage.setItem(`bible_profile_${currentUser.id}`, JSON.stringify(prefs));
-      renderMottoUI();
-      alert("Ayat pegangan pribadi berhasil disimpan.");
+    function applyAccentClass(accent) {
+      selectedAccentTheme = accent || "forest";
+      document.body.classList.remove("accent-ocean", "accent-emerald", "accent-sunset", "accent-royal");
+      if (selectedAccentTheme !== "forest") {
+        document.body.classList.add(`accent-${selectedAccentTheme}`);
+      }
+      document.querySelectorAll("#accentSwatches .swatch-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.accent === selectedAccentTheme);
+      });
     }
 
-    function renderMottoUI() {
+    function selectAccentTheme(accent) {
+      applyAccentClass(accent);
+    }
+
+    function previewProfileLive() {
+      const avatar = document.getElementById("avatarSelect").value;
+      const motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+      document.getElementById("profilePreviewAvatar").textContent = avatar;
+      document.getElementById("profilePreviewMotto").textContent = `“${motto}”`;
+    }
+
+    function renderProfileUI() {
+      if (!currentUser || currentUser.role !== "student") return;
       const prefs = getUserProfilePrefs();
+      const avatar = prefs.avatar || "🕊️";
       const motto = prefs.motto || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+
+      applyAccentClass(prefs.accentTheme || "forest");
+      document.getElementById("avatarSelect").value = avatar;
       document.getElementById("mottoInput").value = motto;
+
+      document.getElementById("topBrandIcon").textContent = avatar;
+      document.getElementById("homeAvatarPill").textContent = `${avatar} PROFIL`;
+      document.getElementById("profilePreviewAvatar").textContent = avatar;
+      document.getElementById("profilePreviewId").textContent = `ID PESERTA: ${currentUser.id}`;
+      document.getElementById("profilePreviewName").textContent = currentUser.name;
+      document.getElementById("profilePreviewMotto").textContent = `“${motto}”`;
       document.getElementById("personalMottoDisplay").innerHTML = `“${escapeHtml(motto)}”<small>${escapeHtml(currentUser.name)} · Ayat Pegangan</small>`;
     }
 
+    async function saveProfileCustomization() {
+      if (!currentUser || currentUser.role !== "student") return;
+      const saveBtn = document.getElementById("saveProfileBtn");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "⏳ Menyimpan Kreasi...";
+
+      const avatar = document.getElementById("avatarSelect").value;
+      const motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+
+      const prefs = { avatar, accentTheme: selectedAccentTheme, motto };
+      localStorage.setItem(`bible_profile_${currentUser.id}`, JSON.stringify(prefs));
+      renderProfileUI();
+
+      if (GOOGLE_SHEETS_WEBHOOK_URL) {
+        try {
+          await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "PROFILE_UPDATE",
+              participantId: currentUser.id,
+              participantName: currentUser.name,
+              avatar,
+              accentTheme: selectedAccentTheme,
+              motto
+            })
+          });
+        } catch (e) {}
+      }
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = "💾 Simpan Kreasi Profil";
+      alert("Kreasi profil Anda berhasil disimpan dan disinkronkan ke Google Sheets!");
+    }
+
+    async function syncRemoteStudentData(studentId) {
+      if (!GOOGLE_SHEETS_WEBHOOK_URL) return;
+      try {
+        const res = await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?action=GET_PROFILE&participantId=${studentId}`);
+        const data = await res.json();
+        if (data.profile) {
+          localStorage.setItem(`bible_profile_${studentId}`, JSON.stringify(data.profile));
+        }
+        if (data.progress && Object.keys(data.progress).length > 0) {
+          const localProg = getUserProgress();
+          const merged = { ...localProg, ...data.progress };
+          saveUserProgress(merged);
+        }
+        renderProfileUI();
+        initTodayReadingView();
+        updateStatsAndWeek();
+      } catch (e) {}
+    }
+
     // =========================================================================
-    // 4. AUTENTIKASI & MASUK PORTAL
+    // 4. AUTENTIKASI & AKSES PENUH PENGAJAR KE AKUN PESERTA
     // =========================================================================
     async function sha256Hex(message) {
       const msgUint8 = new TextEncoder().encode(message);
@@ -1029,25 +1271,66 @@
 
       errEl.classList.add("hidden");
       currentUser = user;
+      mentorOriginalUser = null;
       document.getElementById("loginSection").classList.add("hidden");
       document.getElementById("logoutBtn").classList.remove("hidden");
 
       if (user.role === "teacher") {
-        document.getElementById("welcomeHeading").textContent = "Selamat datang, Pembimbing.";
-        document.getElementById("welcomeSub").textContent = "Panel pendampingan dan pemantauan Program Baca Alkitab 180 Hari.";
-        document.getElementById("mentorDashboard").classList.remove("hidden");
-        loadTeacherMonitorData();
+        openMentorWorkspace();
         return;
       }
 
-      // Peserta
-      document.getElementById("welcomeHeading").textContent = `Selamat datang, ${user.name}.`;
+      openStudentWorkspace(user);
+    }
+
+    function openMentorWorkspace() {
+      stopTimer();
+      stopCamera();
+      applyAccentClass("forest");
+      document.getElementById("topBrandIcon").textContent = "✝";
+      document.getElementById("impersonateBanner").classList.add("hidden");
+      document.getElementById("studentLayout").classList.add("hidden");
+      document.getElementById("welcomeHeading").textContent = "Selamat datang, Pembimbing.";
+      document.getElementById("welcomeSub").textContent = "Panel pendampingan, foto bukti bacaan, dan akses penuh akun peserta.";
+      document.getElementById("mentorDashboard").classList.remove("hidden");
+      loadTeacherMonitorData();
+    }
+
+    function openStudentWorkspace(studentUser, isMentorAccess = false) {
+      currentUser = studentUser;
+      document.getElementById("mentorDashboard").classList.add("hidden");
+      document.getElementById("welcomeHeading").textContent = `Selamat datang, ${studentUser.name}.`;
       document.getElementById("welcomeSub").textContent = "Berakar dalam Firman, bertumbuh dalam iman, berbuah dalam kehidupan.";
       document.getElementById("studentLayout").classList.remove("hidden");
-      renderMottoUI();
+
+      if (isMentorAccess) {
+        document.getElementById("impersonateBanner").classList.remove("hidden");
+        document.getElementById("impersonateLabel").textContent =
+          `🔑 Mode Akses Penuh Pembimbing: Anda sedang membuka akun ${studentUser.name} (${studentUser.id}).`;
+      } else {
+        document.getElementById("impersonateBanner").classList.add("hidden");
+      }
+
+      renderProfileUI();
       initTodayReadingView();
       updateStatsAndWeek();
       showView("home");
+      syncRemoteStudentData(studentUser.id);
+    }
+
+    function impersonateStudent(studentId) {
+      if (!currentUser || currentUser.role !== "teacher") return;
+      const target = ACCOUNTS.find(a => a.id === studentId && a.role === "student");
+      if (!target) return;
+      mentorOriginalUser = currentUser;
+      openStudentWorkspace(target, true);
+    }
+
+    function exitStudentImpersonation() {
+      if (!mentorOriginalUser) return;
+      currentUser = mentorOriginalUser;
+      mentorOriginalUser = null;
+      openMentorWorkspace();
     }
 
     function handleLogout() {
@@ -1057,7 +1340,11 @@
       stopTimer();
       stopCamera();
       currentUser = null;
+      mentorOriginalUser = null;
+      applyAccentClass("forest");
+      document.getElementById("topBrandIcon").textContent = "✝";
       document.getElementById("pinInput").value = "";
+      document.getElementById("impersonateBanner").classList.add("hidden");
       document.getElementById("studentLayout").classList.add("hidden");
       document.getElementById("mentorDashboard").classList.add("hidden");
       document.getElementById("logoutBtn").classList.add("hidden");
@@ -1097,13 +1384,11 @@
       const progress = getUserProgress();
       const saved = progress[activeDayNum];
 
-      // Update Ringkasan & Hero
       document.getElementById("heroDayNum").textContent = item.day;
       document.getElementById("homeDayPill").textContent = `HARI KE-${item.day}`;
       document.getElementById("homePassageRef").textContent = item.passage;
       document.getElementById("homePassageMeta").textContent = `${item.dateFormatted} · ${item.chapterCount} Pasal`;
 
-      // Update Ruang Bacaan
       document.getElementById("readingDayBadge").textContent = `HARI KE-${item.day} DARI ${TOTAL_DAYS}`;
       document.getElementById("readingDateLabel").textContent = item.dateFormatted.toUpperCase();
       document.getElementById("readingPassageTitle").textContent = item.passage;
@@ -1127,7 +1412,7 @@
         document.getElementById("reflectionInput").disabled = true;
         document.getElementById("openCamBtn").disabled = true;
         document.getElementById("submitReadingBtn").disabled = true;
-        document.getElementById("submitReadingBtn").textContent = "✅ Selesai Hari Ini";
+        document.getElementById("submitReadingBtn").textContent = "✅ Selesai & Foto Terkirim";
       } else {
         document.getElementById("alreadyDoneNotice").classList.add("hidden");
         document.getElementById("timerContainer").classList.remove("hidden");
@@ -1142,7 +1427,7 @@
         document.getElementById("startTimerBtn").textContent = "Mulai Baca & Jalankan Timer";
         document.getElementById("startTimerBtn").disabled = false;
         document.getElementById("timerStatus").textContent = "Tekan tombol di bawah saat Anda mulai membuka Alkitab.";
-        document.getElementById("submitReadingBtn").textContent = "✅ Konfirmasi Selesai Membaca";
+        document.getElementById("submitReadingBtn").textContent = "✅ Konfirmasi Selesai Membaca & Kirim Foto";
         checkFormValidity();
       }
     }
@@ -1177,7 +1462,6 @@
         ? "Bacaan hari ini telah selesai"
         : "Menunggu penyelesaian hari ini";
 
-      // Jejak Pekan Ini
       const daysLabel = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
       const weekEl = document.getElementById("week");
       weekEl.innerHTML = "";
@@ -1353,7 +1637,7 @@
     }
 
     // =========================================================================
-    // 8. KAMERA LANGSUNG + WATERMARK OTOMATIS
+    // 8. KAMERA LANGSUNG + WATERMARK OTOMATIS + PENGIRIMAN FOTO KE GS
     // =========================================================================
     async function startCamera() {
       try {
@@ -1409,7 +1693,7 @@
       ctx.font = "12px sans-serif";
       ctx.fillText(`Terverifikasi: ${nowText}`, 14, canvas.height - 14);
 
-      capturedDataURL = canvas.toDataURL("image/jpeg", 0.8);
+      capturedDataURL = canvas.toDataURL("image/jpeg", 0.78);
 
       stopCamera();
       video.classList.add("hidden");
@@ -1441,7 +1725,7 @@
     async function submitDailyReading() {
       const submitBtn = document.getElementById("submitReadingBtn");
       submitBtn.disabled = true;
-      submitBtn.textContent = "⏳ Mengirim Laporan & Foto...";
+      submitBtn.textContent = "⏳ Mengunggah Foto & Laporan ke Google Sheets...";
 
       const item = READING_PLAN.find(p => p.day === activeDayNum);
       const verse = document.getElementById("keyVerseInput").value.trim();
@@ -1484,7 +1768,7 @@
         } catch (e) {}
       }
 
-      alert(`Terima kasih ${currentUser.name}! Bacaan Hari ke-${item.day} (${item.passage}) berhasil tercatat.`);
+      alert(`Terima kasih ${currentUser.name}! Bacaan Hari ke-${item.day} (${item.passage}) beserta foto bukti telah tersimpan ke Google Sheets.`);
       updateStatsAndWeek();
       initTodayReadingView();
     }
@@ -1622,7 +1906,7 @@
     }
 
     // =========================================================================
-    // 11. PANEL PEMBIMBING (PEMANTAUAN LANGSUNG & BALASAN)
+    // 11. PANEL PEMBIMBING (PEMANTAUAN LANGSUNG, FOTO BUKTI & AKSES AKUN)
     // =========================================================================
     async function loadTeacherMonitorData() {
       const tbody = document.getElementById("teacherMonitorBody");
@@ -1631,6 +1915,7 @@
       document.getElementById("mentorDateBadge").textContent = getTodayWIB();
 
       let remoteSessions = {};
+      let remoteProfiles = {};
       let remoteMessages = JSON.parse(localStorage.getItem("bible_community_msgs") || "[]");
 
       if (GOOGLE_SHEETS_WEBHOOK_URL) {
@@ -1638,24 +1923,42 @@
           const res = await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?action=GET_MONITOR&date=${getTodayWIB()}`);
           const data = await res.json();
           if (data.sessions) remoteSessions = data.sessions;
+          if (data.profiles) remoteProfiles = data.profiles;
           if (Array.isArray(data.messages)) remoteMessages = data.messages;
         } catch (e) {}
       }
 
       tbody.innerHTML = students.map(s => {
         const info = remoteSessions[s.id] || {};
+        const prof = remoteProfiles[s.id] || { avatar: "🕊️" };
+
         let badge = `<span class="badge-status st-idle">Belum Mulai</span>`;
         if (info.status === "SELESAI") badge = `<span class="badge-status st-done">✅ Selesai</span>`;
         else if (info.status === "SEDANG_BACA") badge = `<span class="badge-status st-live">⏳ Sedang Baca</span>`;
         else if (info.status === "RESET") badge = `<span class="badge-status st-warn">⚠️ Keluar Web</span>`;
 
+        const photoCell = info.photoUrl && String(info.photoUrl).startsWith("http")
+          ? `<a class="photo-link" href="${escapeHtml(info.photoUrl)}" target="_blank" rel="noopener">📷 Lihat Foto</a>`
+          : `<span class="muted" style="font-size:12px;">Belum ada</span>`;
+
         return `
           <tr>
-            <td><strong>${escapeHtml(s.name)}</strong><br /><span class="muted" style="font-size:11px;">${s.id}</span></td>
+            <td>
+              <strong>${escapeHtml(prof.avatar)} ${escapeHtml(s.name)}</strong><br />
+              <span class="muted" style="font-size:11px;">${s.id}</span>
+            </td>
             <td>${badge}</td>
-            <td>${escapeHtml(info.startTime || "-")}</td>
-            <td>${escapeHtml(info.finishTime || "-")}</td>
+            <td>
+              <span style="font-size:12px;">Mulai: ${escapeHtml(info.startTime || "-")}</span><br />
+              <span style="font-size:12px;">Selesai: ${escapeHtml(info.finishTime || "-")}</span>
+            </td>
+            <td>${photoCell}</td>
             <td><strong>${info.totalDone || 0}</strong> / 180</td>
+            <td>
+              <button type="button" class="secondary btn-sm" onclick="impersonateStudent('${s.id}')">
+                🔑 Masuk Akun
+              </button>
+            </td>
           </tr>
         `;
       }).join("");
