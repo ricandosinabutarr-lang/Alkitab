@@ -109,14 +109,18 @@
     }
     .brand { display: flex; align-items: center; gap: 12px; }
     .mark {
-      width: 42px;
-      height: 42px;
-      border: 1px solid #ffffff55;
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid #ffffff66;
       border-radius: 14px;
       display: grid;
       place-items: center;
       font-size: 21px;
+      overflow: hidden;
+      background: #ffffff14;
+      flex-shrink: 0;
     }
+    .mark img { width: 100%; height: 100%; object-fit: cover; }
     .brand strong { display: block; letter-spacing: 0.13em; font-size: 13px; }
     .brand small { color: #d3dfd8; font-size: 11px; letter-spacing: 0.1em; }
     .top-actions { display: flex; gap: 8px; align-items: center; }
@@ -259,25 +263,52 @@
     .profile-card-preview {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 16px;
-      border-radius: 16px;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 18px;
       background: var(--soft);
       border: 1px solid var(--line);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
     .avatar-badge {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
       background: var(--hero-grad);
       color: #fff;
-      font-size: 32px;
+      font-size: 38px;
       display: grid;
       place-items: center;
       flex-shrink: 0;
+      overflow: hidden;
+      border: 2.5px solid var(--gold);
     }
+    .avatar-badge img { width: 100%; height: 100%; object-fit: cover; }
+
+    .mini-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--soft);
+      display: inline-grid;
+      place-items: center;
+      overflow: hidden;
+      vertical-align: middle;
+      margin-right: 8px;
+      font-size: 16px;
+      border: 1px solid var(--line);
+    }
+    .mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .photo-upload-box {
+      border: 1.5px dashed var(--line);
+      border-radius: 15px;
+      padding: 15px;
+      background: var(--paper);
+      margin: 6px 0 16px;
+    }
+
     .swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 16px; }
     .swatch-btn {
       width: 36px;
@@ -418,8 +449,8 @@
     body.dark .day.done { color: #d6e4dc; }
     .day.today { border-color: var(--gold); box-shadow: inset 0 0 0 1.5px var(--gold); }
 
-    .quote { font: italic 18px/1.5 Georgia, serif; color: var(--ink); }
-    .quote small { display: block; font: 12px system-ui; color: var(--muted); margin-top: 10px; }
+    .quote { font: italic 17px/1.5 Georgia, serif; color: var(--ink); }
+    .quote small { display: block; font: 12px system-ui; color: var(--muted); margin-top: 8px; }
 
     .feed-item {
       border: 1px solid var(--line);
@@ -565,7 +596,7 @@
         <nav class="nav" aria-label="Navigasi utama">
           <button class="active" data-view="home"><i class="ico">⌂</i>Ringkasan</button>
           <button data-view="reading"><i class="ico">▤</i>Bacaan & Jurnal</button>
-          <button data-view="profile"><i class="ico">✦</i>Ruang kreasi profil</button>
+          <button data-view="profile"><i class="ico">✦</i>Profil & Biografi</button>
           <button data-view="progress"><i class="ico">▥</i>Perjalanan 180 hari</button>
           <button data-view="community"><i class="ico">◎</i>Ruang komunitas</button>
           <button data-view="curhat"><i class="ico">♧</i>Ruang curhat privat</button>
@@ -630,15 +661,18 @@
 
             <div class="panel">
               <div class="panel-head">
-                <h3>Ayat pegangan pribadi</h3>
-                <span class="pill" id="homeAvatarPill">🕊️ PROFIL</span>
+                <h3>Kartu profil & biografi</h3>
+                <span class="pill" id="homeAvatarPill">PROFIL</span>
               </div>
               <div class="quote" id="personalMottoDisplay">
                 “Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.”
                 <small>Mazmur 119:105 · TB</small>
               </div>
+              <p class="muted" id="homeBioSummary" style="font-size:13px; margin:10px 0 0;">
+                Belum ada biografi singkat yang ditulis.
+              </p>
               <div style="margin-top:14px;">
-                <button class="secondary btn-sm" onclick="showView('profile')">✦ Buka Ruang Kreasi Profil</button>
+                <button class="secondary btn-sm" onclick="showView('profile')">📷 Ganti Foto & Tulis Biografi</button>
               </div>
             </div>
           </div>
@@ -660,10 +694,10 @@
               <span class="pill">PERSIAPAN</span>
             </div>
             <p class="muted">
-              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat berkreasi di <strong>Ruang kreasi profil</strong> atau memasang pengingat kalender.
+              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat melengkapi foto diri dan biografi singkat di dashboard <strong>Profil & Biografi</strong>.
             </p>
             <div class="actions">
-              <button class="primary" onclick="showView('profile')">✦ Buka Ruang Kreasi Profil</button>
+              <button class="primary" onclick="showView('profile')">📷 Lengkapi Foto Profil & Biografi</button>
               <button class="secondary" onclick="showView('progress')">Atur Pengingat Kalender →</button>
             </div>
           </div>
@@ -736,27 +770,55 @@
           </div>
         </section>
 
-        <!-- VIEW 3: RUANG KREASI PROFIL -->
+        <!-- VIEW 3: DASHBOARD PROFIL & RUANG KREASI BIOGRAFI -->
         <section class="view" id="profile">
           <div class="panel">
             <div class="panel-head">
-              <h3>Ruang kreasi profil peserta</h3>
-              <span class="pill">TAMPILAN PRIBADI</span>
+              <h3>Dashboard Profil & Ruang Kreasi Biografi</h3>
+              <span class="pill">IDENTITAS PESERTA</span>
             </div>
             <p class="muted" style="font-size:13px;">
-              Sesuaikan ikon identitas, nuansa warna ruang bacaan, dan ayat pegangan iman Anda. Perubahan tersimpan otomatis ke profil Anda dan Google Sheets.
+              Unggah foto profil Anda sendiri, tuliskan biografi singkat, dan atur ayat pegangan serta warna ruang bacaan Anda.
             </p>
 
             <div class="profile-card-preview">
               <div class="avatar-badge" id="profilePreviewAvatar">🕊️</div>
-              <div>
+              <div style="flex:1; min-width:210px;">
                 <div class="eyebrow" id="profilePreviewId">PESERTA KATEKISASI</div>
-                <strong style="font: 600 20px Georgia, serif; display:block;" id="profilePreviewName">Nama Peserta</strong>
-                <span class="muted" style="font-size:13px; font-style:italic;" id="profilePreviewMotto">“Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.”</span>
+                <strong style="font: 600 21px Georgia, serif; display:block; margin:2px 0;" id="profilePreviewName">Nama Peserta</strong>
+                <div style="font-size:13px; color:var(--ink); margin-bottom:6px;" id="profilePreviewBio">
+                  Belum ada biografi singkat. Tuliskan perkenalan diri Anda di bawah ini.
+                </div>
+                <div class="muted" style="font-size:12.5px; font-style:italic;" id="profilePreviewMotto">
+                  “Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.”
+                </div>
               </div>
             </div>
 
-            <label class="formlabel">1. Pilih Nuansa Warna Ruang Bacaan</label>
+            <label class="formlabel">1. Foto Profil Pribadi (Unggah dari Galeri atau Ambil Foto)</label>
+            <div class="photo-upload-box">
+              <div class="actions" style="align-items:center;">
+                <input type="file" id="profilePhotoFile" accept="image/*" class="hidden" onchange="handleProfilePhotoUpload(event)" />
+                <button type="button" class="primary btn-sm" onclick="document.getElementById('profilePhotoFile').click()">
+                  🖼️ Pilih Foto dari Galeri / Perangkat
+                </button>
+                <button type="button" class="secondary btn-sm" id="removeProfilePhotoBtn" onclick="clearProfilePhoto()">
+                  🗑️ Gunakan Ikon Bawaan
+                </button>
+              </div>
+              <p class="muted" style="font-size:12px; margin:8px 0 0;">
+                Foto otomatis disesuaikan ukurannya dan tersimpan ke Google Drive & Google Sheets saat Anda menekan Simpan Profil.
+              </p>
+            </div>
+
+            <label class="formlabel" for="bioInput">2. Ruang Kreasi Biografi Singkat Anda</label>
+            <textarea class="field" id="bioInput" maxlength="350" oninput="previewProfileLive()" placeholder="Tuliskan biografi singkat Anda (misalnya: asal jemaat/sekolah, hobi, hal yang disukai, serta harapan Anda mengikuti program baca Alkitab 180 hari)..."></textarea>
+            <div class="muted" style="font-size:11.5px; margin:-6px 0 14px; text-align:right;" id="bioCharCount">0 / 350 karakter</div>
+
+            <label class="formlabel" for="mottoInput">3. Ayat Pegangan / Motto Iman Pribadi</label>
+            <input class="field" id="mottoInput" maxlength="120" oninput="previewProfileLive()" placeholder="Tulis ayat favorit atau motto iman Anda..." />
+
+            <label class="formlabel">4. Nuansa Warna Ruang Bacaan</label>
             <div class="swatch-row" id="accentSwatches">
               <button type="button" class="swatch-btn active" data-accent="forest" style="background:#173d34;" title="Hijau Hutan Klasik" onclick="selectAccentTheme('forest')"></button>
               <button type="button" class="swatch-btn" data-accent="ocean" style="background:#1e3a8a;" title="Biru Samudra" onclick="selectAccentTheme('ocean')"></button>
@@ -765,28 +827,8 @@
               <button type="button" class="swatch-btn" data-accent="royal" style="background:#581c87;" title="Ungu Kerajaan" onclick="selectAccentTheme('royal')"></button>
             </div>
 
-            <div style="display:grid; grid-template-columns: 150px 1fr; gap:12px;">
-              <div>
-                <label class="formlabel" for="avatarSelect">2. Ikon Identitas</label>
-                <select class="field" id="avatarSelect" onchange="previewProfileLive()">
-                  <option value="🕊️">🕊️ Merpati</option>
-                  <option value="📖">📖 Alkitab</option>
-                  <option value="✝️">✝️ Salib</option>
-                  <option value="🌿">🌿 Ranting</option>
-                  <option value="🔥">🔥 Api Roh</option>
-                  <option value="⭐">⭐ Bintang</option>
-                  <option value="🦁">🦁 Singa</option>
-                  <option value="🐑">🐑 Domba</option>
-                </select>
-              </div>
-              <div>
-                <label class="formlabel" for="mottoInput">3. Ayat Pegangan / Motto Iman Pribadi</label>
-                <input class="field" id="mottoInput" maxlength="120" oninput="previewProfileLive()" placeholder="Tulis ayat favorit atau motto iman Anda..." />
-              </div>
-            </div>
-
             <div class="actions">
-              <button type="button" class="primary" id="saveProfileBtn" onclick="saveProfileCustomization()">💾 Simpan Kreasi Profil</button>
+              <button type="button" class="primary" id="saveProfileBtn" onclick="saveProfileCustomization()">💾 Simpan Foto Profil & Biografi</button>
             </div>
           </div>
         </section>
@@ -893,7 +935,7 @@
         <div>
           <div class="eyebrow">RUANG PEMBIMBING · PENDAMPINGAN & AKSES PENUH</div>
           <h2>Pemantauan Langsung & Kontrol Akun Peserta</h2>
-          <p>Pantau sesi baca harian, buka foto bukti di Google Drive, atau masuk langsung ke akun peserta mana pun untuk meninjau profil dan capaiannya.</p>
+          <p>Pantau sesi baca harian, buka foto bukti di Google Drive, atau masuk langsung ke akun peserta mana pun untuk meninjau foto profil, biografi, dan capaiannya.</p>
         </div>
         <div>
           <button class="iconbtn" onclick="loadTeacherMonitorData()">🔄 Segarkan Data</button>
@@ -943,7 +985,7 @@
     const TOTAL_DAYS = 180;
     const MIN_READ_SECONDS = 300;
     const APP_PUBLIC_URL = "https://ricandosinabutarr-lang.github.io/Alkitab/";
-    const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwEQQx-G8tcO0DBL93JRo305pI5CrTS-Ov8jD7xo0_0GxE7IScja33-JV1_7cM6m5trfQ/exec";
+    const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbznvOMR_iDtHkkSiR2JPNyQfUbT4NjPAFmuTsK86PB9WJvEATKK9wAtygqp9SQFohBuyA/exec";
 
     const ACCOUNTS = [
       { id: "ADMIN", role: "teacher", name: "👨‍🏫 Pengajar / Pembina Katekisasi", pinHash: "4a20678d7125244ada7cf0f8b03ef8256fcedeaf7a30b0daf4e05a9e995d367e" },
@@ -1021,6 +1063,7 @@
     let currentUser = null;
     let mentorOriginalUser = null;
     let selectedAccentTheme = "forest";
+    let pendingProfilePhotoBase64 = null;
     let activeDayNum = 1;
     let sessionStartTimeWIB = null;
     let timerSecondsLeft = MIN_READ_SECONDS;
@@ -1075,9 +1118,13 @@
     }
 
     function getUserProfilePrefs() {
-      if (!currentUser) return { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
+      if (!currentUser) {
+        return { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.", bio: "", photoBase64: "", photoUrl: "" };
+      }
       const raw = localStorage.getItem(`bible_profile_${currentUser.id}`);
-      return raw ? JSON.parse(raw) : { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
+      return raw
+        ? JSON.parse(raw)
+        : { avatar: "🕊️", accentTheme: "forest", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.", bio: "", photoBase64: "", photoUrl: "" };
     }
 
     function applyAccentClass(accent) {
@@ -1095,10 +1142,56 @@
       applyAccentClass(accent);
     }
 
+    function setAvatarElementHTML(el, photoSrc, fallbackIcon) {
+      if (!el) return;
+      if (photoSrc && (photoSrc.startsWith("data:image") || photoSrc.startsWith("http"))) {
+        el.innerHTML = `<img src="${escapeHtml(photoSrc)}" alt="Foto Profil" />`;
+      } else {
+        el.textContent = fallbackIcon || "🕊️";
+      }
+    }
+
+    function handleProfilePhotoUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const size = 280;
+          const canvas = document.createElement("canvas");
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext("2d");
+
+          const minSide = Math.min(img.width, img.height);
+          const sx = (img.width - minSide) / 2;
+          const sy = (img.height - minSide) / 2;
+          ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+
+          pendingProfilePhotoBase64 = canvas.toDataURL("image/jpeg", 0.78);
+          setAvatarElementHTML(document.getElementById("profilePreviewAvatar"), pendingProfilePhotoBase64, "🕊️");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearProfilePhoto() {
+      pendingProfilePhotoBase64 = "CLEAR";
+      document.getElementById("profilePhotoFile").value = "";
+      setAvatarElementHTML(document.getElementById("profilePreviewAvatar"), "", "🕊️");
+    }
+
     function previewProfileLive() {
-      const avatar = document.getElementById("avatarSelect").value;
+      const bio = document.getElementById("bioInput").value;
       const motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
-      document.getElementById("profilePreviewAvatar").textContent = avatar;
+
+      document.getElementById("bioCharCount").textContent = `${bio.length} / 350 karakter`;
+      document.getElementById("profilePreviewBio").textContent = bio.trim()
+        ? bio.trim()
+        : "Belum ada biografi singkat. Tuliskan perkenalan diri Anda di bawah ini.";
       document.getElementById("profilePreviewMotto").textContent = `“${motto}”`;
     }
 
@@ -1107,31 +1200,63 @@
       const prefs = getUserProfilePrefs();
       const avatar = prefs.avatar || "🕊️";
       const motto = prefs.motto || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+      const bio = prefs.bio || "";
+      const activePhoto = pendingProfilePhotoBase64 === "CLEAR"
+        ? ""
+        : (pendingProfilePhotoBase64 || prefs.photoBase64 || "");
 
       applyAccentClass(prefs.accentTheme || "forest");
-      document.getElementById("avatarSelect").value = avatar;
+      document.getElementById("bioInput").value = bio;
       document.getElementById("mottoInput").value = motto;
+      document.getElementById("bioCharCount").textContent = `${bio.length} / 350 karakter`;
 
-      document.getElementById("topBrandIcon").textContent = avatar;
-      document.getElementById("homeAvatarPill").textContent = `${avatar} PROFIL`;
-      document.getElementById("profilePreviewAvatar").textContent = avatar;
+      setAvatarElementHTML(document.getElementById("topBrandIcon"), activePhoto, avatar);
+      setAvatarElementHTML(document.getElementById("profilePreviewAvatar"), activePhoto, avatar);
+
+      document.getElementById("homeAvatarPill").textContent = activePhoto ? "📸 FOTO PROFIL" : `${avatar} PROFIL`;
       document.getElementById("profilePreviewId").textContent = `ID PESERTA: ${currentUser.id}`;
       document.getElementById("profilePreviewName").textContent = currentUser.name;
+      document.getElementById("profilePreviewBio").textContent = bio
+        ? bio
+        : "Belum ada biografi singkat. Tuliskan perkenalan diri Anda di bawah ini.";
       document.getElementById("profilePreviewMotto").textContent = `“${motto}”`;
+
       document.getElementById("personalMottoDisplay").innerHTML = `“${escapeHtml(motto)}”<small>${escapeHtml(currentUser.name)} · Ayat Pegangan</small>`;
+      document.getElementById("homeBioSummary").textContent = bio
+        ? `Biografi: ${bio}`
+        : "Belum ada biografi singkat yang ditulis.";
     }
 
     async function saveProfileCustomization() {
       if (!currentUser || currentUser.role !== "student") return;
       const saveBtn = document.getElementById("saveProfileBtn");
       saveBtn.disabled = true;
-      saveBtn.textContent = "⏳ Menyimpan Kreasi...";
+      saveBtn.textContent = "⏳ Menyimpan Foto & Biografi...";
 
-      const avatar = document.getElementById("avatarSelect").value;
+      const existing = getUserProfilePrefs();
       const motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+      const bio = document.getElementById("bioInput").value.trim();
 
-      const prefs = { avatar, accentTheme: selectedAccentTheme, motto };
+      let finalPhotoBase64 = existing.photoBase64 || "";
+      let uploadPayloadPhoto = "";
+
+      if (pendingProfilePhotoBase64 === "CLEAR") {
+        finalPhotoBase64 = "";
+      } else if (pendingProfilePhotoBase64) {
+        finalPhotoBase64 = pendingProfilePhotoBase64;
+        uploadPayloadPhoto = pendingProfilePhotoBase64;
+      }
+
+      const prefs = {
+        avatar: "🕊️",
+        accentTheme: selectedAccentTheme,
+        motto,
+        bio,
+        photoBase64: finalPhotoBase64,
+        photoUrl: existing.photoUrl || ""
+      };
       localStorage.setItem(`bible_profile_${currentUser.id}`, JSON.stringify(prefs));
+      pendingProfilePhotoBase64 = null;
       renderProfileUI();
 
       if (GOOGLE_SHEETS_WEBHOOK_URL) {
@@ -1144,17 +1269,19 @@
               action: "PROFILE_UPDATE",
               participantId: currentUser.id,
               participantName: currentUser.name,
-              avatar,
+              avatar: "🕊️",
               accentTheme: selectedAccentTheme,
-              motto
+              motto,
+              bio,
+              photoBase64: uploadPayloadPhoto
             })
           });
         } catch (e) {}
       }
 
       saveBtn.disabled = false;
-      saveBtn.textContent = "💾 Simpan Kreasi Profil";
-      alert("Kreasi profil Anda berhasil disimpan dan disinkronkan ke Google Sheets!");
+      saveBtn.textContent = "💾 Simpan Foto Profil & Biografi";
+      alert("Foto profil dan biografi singkat Anda berhasil disimpan ke sistem!");
     }
 
     async function syncRemoteStudentData(studentId) {
@@ -1163,7 +1290,13 @@
         const res = await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?action=GET_PROFILE&participantId=${studentId}`);
         const data = await res.json();
         if (data.profile) {
-          localStorage.setItem(`bible_profile_${studentId}`, JSON.stringify(data.profile));
+          const localPrefs = getUserProfilePrefs();
+          const mergedPrefs = {
+            ...localPrefs,
+            ...data.profile,
+            photoBase64: data.profile.photoBase64 || localPrefs.photoBase64 || ""
+          };
+          localStorage.setItem(`bible_profile_${studentId}`, JSON.stringify(mergedPrefs));
         }
         if (data.progress && Object.keys(data.progress).length > 0) {
           const localProg = getUserProgress();
@@ -1255,13 +1388,14 @@
       document.getElementById("impersonateBanner").classList.add("hidden");
       document.getElementById("studentLayout").classList.add("hidden");
       document.getElementById("welcomeHeading").textContent = "Selamat datang, Pembimbing.";
-      document.getElementById("welcomeSub").textContent = "Panel pendampingan, foto bukti bacaan, dan akses penuh akun peserta.";
+      document.getElementById("welcomeSub").textContent = "Panel pendampingan, foto bukti bacaan, biografi, dan akses penuh akun peserta.";
       document.getElementById("mentorDashboard").classList.remove("hidden");
       loadTeacherMonitorData();
     }
 
     function openStudentWorkspace(studentUser, isMentorAccess = false) {
       currentUser = studentUser;
+      pendingProfilePhotoBase64 = null;
       document.getElementById("mentorDashboard").classList.add("hidden");
       document.getElementById("quickProfileBtn").classList.remove("hidden");
       document.getElementById("welcomeHeading").textContent = `Selamat datang, ${studentUser.name}.`;
@@ -1306,6 +1440,7 @@
       stopCamera();
       currentUser = null;
       mentorOriginalUser = null;
+      pendingProfilePhotoBase64 = null;
       applyAccentClass("forest");
       document.getElementById("topBrandIcon").textContent = "✝";
       document.getElementById("quickProfileBtn").classList.add("hidden");
@@ -1491,7 +1626,7 @@
 
     function updateTimerDisplay() {
       const mins = String(Math.floor(timerSecondsLeft / 60)).padStart(2, "0");
-      const secs = String(timerSecondsLeft % 60).padStart(2, "0");
+      const secs = String(timerSecondsLeft % 60)).padStart(2, "0");
       document.getElementById("timerDisplay").textContent = `${mins}:${secs}`;
     }
 
@@ -1875,7 +2010,10 @@
 
       tbody.innerHTML = students.map(s => {
         const info = remoteSessions[s.id] || {};
-        const prof = remoteProfiles[s.id] || { avatar: "🕊️" };
+        const prof = remoteProfiles[s.id] || {};
+        const avatarHtml = prof.photoBase64 && prof.photoBase64.startsWith("data:image")
+          ? `<span class="mini-avatar"><img src="${escapeHtml(prof.photoBase64)}" alt="" /></span>`
+          : `<span class="mini-avatar">${escapeHtml(prof.avatar || "🕊️")}</span>`;
 
         let badge = `<span class="badge-status st-idle">Belum Mulai</span>`;
         if (info.status === "SELESAI") badge = `<span class="badge-status st-done">✅ Selesai</span>`;
@@ -1886,11 +2024,16 @@
           ? `<a class="photo-link" href="${escapeHtml(info.photoUrl)}" target="_blank" rel="noopener">📷 Lihat Foto</a>`
           : `<span class="muted" style="font-size:12px;">Belum ada</span>`;
 
+        const bioSnippet = prof.bio
+          ? `<div class="muted" style="font-size:11.5px; max-width:260px; margin-top:3px;">“${escapeHtml(prof.bio)}”</div>`
+          : "";
+
         return `
           <tr>
             <td>
-              <strong>${escapeHtml(prof.avatar)} ${escapeHtml(s.name)}</strong><br />
-              <span class="muted" style="font-size:11px;">${s.id}</span>
+              ${avatarHtml}<strong>${escapeHtml(s.name)}</strong>
+              <span class="muted" style="font-size:11px;">(${s.id})</span>
+              ${bioSnippet}
             </td>
             <td>${badge}</td>
             <td>
