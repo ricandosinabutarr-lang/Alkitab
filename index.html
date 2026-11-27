@@ -16,46 +16,97 @@
       --success: #16a34a;
       --danger: #dc2626;
       --border: #e2e8f0;
+      --header-grad: linear-gradient(135deg, #1e3a8a, #1e40af);
+    }
+
+    body.theme-emerald {
+      --primary: #065f46;
+      --primary-light: #10b981;
+      --accent: #d97706;
+      --bg: #ecfdf5;
+      --header-grad: linear-gradient(135deg, #065f46, #047857);
+    }
+
+    body.theme-sunset {
+      --primary: #9a3412;
+      --primary-light: #f97316;
+      --accent: #eab308;
+      --bg: #fff7ed;
+      --header-grad: linear-gradient(135deg, #9a3412, #c2410c);
+    }
+
+    body.theme-royal {
+      --primary: #581c87;
+      --primary-light: #9333ea;
+      --accent: #f59e0b;
+      --bg: #faf5ff;
+      --header-grad: linear-gradient(135deg, #581c87, #7e22ce);
+    }
+
+    body.theme-dark {
+      --primary: #38bdf8;
+      --primary-light: #0ea5e9;
+      --accent: #fbbf24;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+      --header-grad: linear-gradient(135deg, #020617, #1e293b);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 48px; }
+    body { background: var(--bg); color: var(--text); line-height: 1.55; padding-bottom: 64px; transition: background 0.35s ease, color 0.35s ease; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+    }
 
     header {
-      background: linear-gradient(135deg, var(--primary), #1e40af);
+      background: var(--header-grad);
       color: #fff;
-      padding: 22px 16px;
+      padding: 24px 16px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+      position: relative;
+      overflow: hidden;
     }
-    header h1 { font-size: 1.35rem; font-weight: 700; }
-    header p { font-size: 0.85rem; opacity: 0.92; margin-top: 4px; }
+    header h1 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em; }
+    header p { font-size: 0.86rem; opacity: 0.92; margin-top: 4px; }
 
-    .container { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+    .container { max-width: 920px; margin: 20px auto; padding: 0 16px; }
     .card {
       background: var(--card);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
       border: 1px solid var(--border);
       margin-bottom: 20px;
+      animation: fadeSlideUp 0.4s ease;
     }
 
     h2 { font-size: 1.15rem; margin-bottom: 12px; color: var(--primary); }
     label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
     select, input, textarea {
       width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
       font-size: 0.95rem;
       margin-bottom: 14px;
-      background: #fff;
+      background: var(--card);
+      color: var(--text);
+      transition: 0.2s;
     }
     select:focus, input:focus, textarea:focus {
       outline: none;
       border-color: var(--primary-light);
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
     }
 
     button {
@@ -63,27 +114,93 @@
       color: #fff;
       border: none;
       padding: 11px 18px;
-      border-radius: 8px;
-      font-size: 0.95rem;
+      border-radius: 10px;
+      font-size: 0.94rem;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.2s;
+      transition: transform 0.15s ease, opacity 0.2s ease, background 0.2s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
-    button:hover:not(:disabled) { background: #1d4ed8; }
-    button:disabled { background: #94a3b8; cursor: not-allowed; opacity: 0.75; }
-    button.btn-success { background: var(--success); }
-    button.btn-success:hover:not(:disabled) { background: #15803d; }
-    button.btn-accent { background: var(--accent); }
-    button.btn-accent:hover:not(:disabled) { background: #b45309; }
+    body.theme-dark button { color: #0f172a; }
+    button:hover:not(:disabled) { transform: translateY(-1px); opacity: 0.94; }
+    button:active:not(:disabled) { transform: scale(0.98); }
+    button:disabled { background: #94a3b8; color: #fff; cursor: not-allowed; opacity: 0.7; }
+    button.btn-success { background: var(--success); color: #fff; }
+    button.btn-accent { background: var(--accent); color: #fff; }
+    button.btn-danger { background: var(--danger); color: #fff; }
     button.btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
-    button.btn-outline:hover:not(:disabled) { background: #eff6ff; }
-    button.btn-sm { padding: 6px 12px; font-size: 0.82rem; }
+    button.btn-sm { padding: 7px 12px; font-size: 0.82rem; }
 
     .hidden { display: none !important; }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: var(--card);
+      padding: 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .nav-tab {
+      background: transparent;
+      color: var(--muted);
+      padding: 10px 6px;
+      border-radius: 10px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      flex-direction: column;
+      gap: 4px;
+    }
+    body.theme-dark .nav-tab { color: var(--muted); }
+    .nav-tab.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    body.theme-dark .nav-tab.active { color: #0f172a; }
+
+    /* Profile Banner & Avatar */
+    .profile-hero {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .avatar-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--header-grad);
+      color: #fff;
+      font-size: 1.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+    .theme-swatches {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .swatch {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--border);
+      transition: transform 0.2s;
+    }
+    .swatch:hover { transform: scale(1.12); }
 
     /* Stats Bar */
     .stats-grid {
@@ -93,100 +210,73 @@
       margin-bottom: 16px;
     }
     .stat-box {
-      background: #f8fafc;
+      background: rgba(148, 163, 184, 0.08);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 14px;
       text-align: center;
     }
-    .stat-box .val { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .stat-box .val { font-size: 1.45rem; font-weight: 800; color: var(--primary); }
     .stat-box .lbl { font-size: 0.78rem; color: var(--muted); }
 
-    /* Calendar Grid */
-    .cal-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .legend { display: flex; gap: 12px; font-size: 0.78rem; flex-wrap: wrap; }
-    .legend span { display: inline-flex; align-items: center; gap: 5px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .dot.done { background: var(--success); }
-    .dot.today { background: var(--accent); }
-    .dot.missed { background: #fecaca; border: 1px solid var(--danger); }
-    .dot.upcoming { background: #e2e8f0; }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
-      gap: 8px;
-      max-height: 360px;
-      overflow-y: auto;
-      padding: 4px;
-    }
-    .day-cell {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 6px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.15s;
-      background: #fff;
-    }
-    .day-cell:hover { transform: translateY(-2px); border-color: var(--primary-light); }
-    .day-cell.active-selected { outline: 2px solid var(--primary); }
-    .day-cell.done { background: #dcfce7; border-color: #86efac; }
-    .day-cell.today { background: #fef3c7; border-color: #f59e0b; }
-    .day-cell.missed { background: #fee2e2; border-color: #fca5a5; }
-    .day-cell .d-num { font-weight: 700; font-size: 0.85rem; }
-    .day-cell .d-date { font-size: 0.7rem; color: var(--muted); }
-    .day-cell .d-ref {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-top: 3px;
-      white-space: nowrap;
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
       overflow: hidden;
-      text-overflow: ellipsis;
+      margin-top: 8px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--success);
+      width: 0%;
+      transition: width 0.6s ease;
     }
 
     /* Reading Session Box */
     .reading-banner {
-      background: #eff6ff;
+      background: rgba(59, 130, 246, 0.08);
       border-left: 4px solid var(--primary);
-      padding: 14px;
-      border-radius: 8px;
+      padding: 16px;
+      border-radius: 10px;
       margin-bottom: 16px;
     }
-    .reading-banner h3 { font-size: 1.1rem; color: var(--primary); }
-    .reading-banner p { font-size: 0.88rem; color: #334155; margin-top: 4px; }
+    .reading-banner h3 { font-size: 1.2rem; color: var(--primary); margin-top: 2px; }
+    .reading-banner p { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
 
     .timer-box {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 10px;
-      padding: 14px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 12px;
+      padding: 16px;
       text-align: center;
       margin-bottom: 16px;
     }
     .timer-display {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       font-variant-numeric: tabular-nums;
       color: var(--accent);
     }
-    .timer-status { font-size: 0.82rem; color: #92400e; margin-top: 4px; }
+    .timer-status { font-size: 0.83rem; color: var(--text); margin-top: 4px; }
+    .timer-rules {
+      font-size: 0.76rem;
+      color: var(--muted);
+      background: rgba(148, 163, 184, 0.1);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      text-align: left;
+    }
 
     /* Camera Preview */
     .camera-area {
-      border: 2px dashed #cbd5e1;
+      border: 2px dashed var(--border);
       border-radius: 12px;
-      padding: 14px;
+      padding: 16px;
       text-align: center;
-      background: #f8fafc;
+      background: rgba(148, 163, 184, 0.05);
       margin-bottom: 16px;
     }
     video, canvas#snapshotCanvas {
@@ -197,6 +287,52 @@
       display: block;
       background: #000;
     }
+
+    /* Discussion & Curhat Feed */
+    .post-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: rgba(148, 163, 184, 0.04);
+    }
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .teacher-reply {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--success);
+      background: rgba(22, 163, 74, 0.08);
+      border-radius: 6px;
+      font-size: 0.86rem;
+    }
+
+    /* Teacher Monitor Table */
+    .monitor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .monitor-table th, .monitor-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 700;
+    }
+    .pill-live { background: #fef3c7; color: #b45309; animation: pulseGlow 2s infinite; }
+    .pill-done { background: #dcfce7; color: #166534; }
+    .pill-idle { background: #e2e8f0; color: #475569; }
 
     .badge-alert {
       background: #fee2e2;
@@ -214,191 +350,373 @@
       font-size: 0.85rem;
       margin-bottom: 12px;
     }
+    .anti-paste-note {
+      font-size: 0.76rem;
+      color: var(--accent);
+      margin-top: -10px;
+      margin-bottom: 12px;
+    }
+    .reminder-card {
+      background: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>📖 Program Baca Alkitab 180 Hari</h1>
-  <p>Katekisasi • 16 November 2026 – 14 Mei 2027 (1.189 Pasal)</p>
+  <p id="headerSubtitle">Katekisasi • Dimulai Senin, 30 November 2026 (1.189 Pasal)</p>
 </header>
 
 <div class="container">
 
   <!-- LOGIN CARD -->
   <div id="loginCard" class="card">
-    <h2>Masuk Peserta Katekisasi</h2>
+    <h2>Masuk ke Portal Katekisasi</h2>
     <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">
-      Pilih nama Anda dan masukkan PIN 6-digit untuk membuka jadwal bacaan harian serta mencatat progres.
+      Pilih nama Anda (Peserta atau Pengajar/Pembina) dan masukkan PIN 6-digit.
     </p>
     <div id="loginError" class="badge-alert hidden"></div>
 
-    <label for="participantSelect">Nama Peserta</label>
+    <label for="participantSelect">Pilih Akun</label>
     <select id="participantSelect">
-      <option value="">-- Pilih Nama Peserta --</option>
+      <option value="">-- Pilih Nama Anda --</option>
     </select>
 
-    <label for="pinInput">PIN Peserta (6 Digit)</label>
+    <label for="pinInput">PIN Akses (6 Digit)</label>
     <input type="password" id="pinInput" maxlength="6" inputmode="numeric" placeholder="Masukkan 6 digit PIN" />
 
-    <button id="loginBtn" onclick="handleLogin()" style="width:100%;">Masuk ke Jadwal Bacaan</button>
+    <button id="loginBtn" onclick="handleLogin()" style="width:100%;">Masuk ke Ruang Bacaan</button>
   </div>
 
-  <!-- MAIN APP DASHBOARD -->
+  <!-- ===================================================================== -->
+  <!-- PARTICIPANT DASHBOARD                                                 -->
+  <!-- ===================================================================== -->
   <div id="appDashboard" class="hidden">
 
-    <!-- User Top Bar -->
-    <div class="card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-      <div>
-        <div style="font-size:0.8rem; color:var(--muted);">Peserta Aktif:</div>
-        <strong id="userNameDisplay" style="font-size:1.05rem; color:var(--primary);"></strong>
-      </div>
-      <button class="btn-outline btn-sm" onclick="handleLogout()">Keluar</button>
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" id="tabBtnToday" onclick="switchTab('today')">📖<span>Bacaan Hari Ini</span></button>
+      <button class="nav-tab" id="tabBtnProfile" onclick="switchTab('profile')">🎨<span>Profil & Capaian</span></button>
+      <button class="nav-tab" id="tabBtnDiscuss" onclick="switchTab('discuss')">💬<span>Ruang Diskusi</span></button>
+      <button class="nav-tab" id="tabBtnCurhat" onclick="switchTab('curhat')">🤍<span>Ruang Curhat</span></button>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="stat-box">
-        <div class="val" id="statCompleted">0 / 180</div>
-        <div class="lbl">Hari Selesai</div>
-      </div>
-      <div class="stat-box">
-        <div class="val" id="statPercent">0%</div>
-        <div class="lbl">Total Progres</div>
-      </div>
-      <div class="stat-box">
-        <div class="val" id="statChapters">0 / 1189</div>
-        <div class="lbl">Pasal Terbaca</div>
-      </div>
-    </div>
-
-    <!-- Calendar Section -->
-    <div class="card">
-      <div class="cal-controls">
-        <h2 style="margin-bottom:0;">📅 Kalender Bacaan (180 Hari)</h2>
-        <div class="legend">
-          <span><i class="dot done"></i> Selesai</span>
-          <span><i class="dot today"></i> Hari Ini</span>
-          <span><i class="dot missed"></i> Terlewat</span>
-          <span><i class="dot upcoming"></i> Akan Datang</span>
-        </div>
-      </div>
-
-      <div style="margin-bottom:10px; display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="btn-sm btn-outline" onclick="filterCalendar('all')">Semua (180)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month1')">Bulan 1 (H1–30)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month2')">Bulan 2 (H31–60)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month3')">Bulan 3 (H61–90)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month4')">Bulan 4 (H91–120)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month5')">Bulan 5 (H121–150)</button>
-        <button class="btn-sm btn-outline" onclick="filterCalendar('month6')">Bulan 6 (H151–180)</button>
-      </div>
-
-      <div id="calendarGrid" class="calendar-grid"></div>
-    </div>
-
-    <!-- Active Day Reading & Verification -->
-    <div id="readingSection" class="card">
-      <div class="reading-banner">
-        <div style="font-size:0.8rem; font-weight:700; color:var(--accent);" id="selectedDayLabel">HARI KE-1</div>
-        <h3 id="selectedPassageTitle">Kejadian 1 – Kejadian 7</h3>
-        <p id="selectedDateText">Senin, 16 November 2026 • Target: 7 Pasal</p>
-      </div>
-
-      <div id="alreadyDoneNotice" class="badge-info hidden">
-        ✅ Bacaan hari ini sudah Anda selesaikan dan tercatat! Anda tetap dapat melihat kembali catatan refleksi Anda di bawah.
-      </div>
-
-      <!-- Focus Timer -->
-      <div id="timerContainer" class="timer-box">
-        <div style="font-size:0.85rem; font-weight:600;">⏱️ Timer Fokus Membaca (Minimum 5 Menit)</div>
-        <div class="timer-display" id="timerDisplay">05:00</div>
-        <div class="timer-status" id="timerStatus">
-          Tekan tombol di bawah saat Anda mulai membuka Alkitab. Tetap di halaman ini agar timer berjalan.
-        </div>
-        <div style="margin-top:10px;">
-          <button id="startTimerBtn" class="btn-accent" onclick="toggleTimer()">Mulai Baca & Jalankan Timer</button>
-        </div>
-      </div>
-
-      <!-- Reflection Form -->
-      <label for="keyVerseInput">1. Satu Ayat Paling Berkesan Hari Ini</label>
-      <input type="text" id="keyVerseInput" placeholder="Contoh: Kejadian 1:1 - Pada mulanya Allah menciptakan langit dan bumi." />
-
-      <label for="reflectionInput">2. Ringkasan Singkat / Pelajaran Iman (Minimal 20 karakter)</label>
-      <textarea id="reflectionInput" rows="3" placeholder="Tuliskan apa yang Anda pelajari dari pembacaan pasal hari ini..."></textarea>
-
-      <!-- Open Camera Check-in with Auto Watermark -->
-      <label>3. Foto Bukti Membaca Alkitab (Kamera Langsung + Watermark Otomatis)</label>
-      <div class="camera-area">
-        <p style="font-size:0.82rem; color:var(--muted); margin-bottom:8px;">
-          Ambil foto diri Anda bersama Alkitab yang sedang dibaca. Sistem akan otomatis menyematkan stempel Nama, Tanggal/Jam WIB, dan Pasal Bacaan pada foto.
+    <!-- TAB 1: BACAAN HARI INI SAJA (TANPA DAFTAR 180 HARI) -->
+    <div id="tabToday">
+      <div id="preStartNotice" class="card hidden" style="text-align:center;">
+        <h2>⏳ Program Bacaan Segera Dimulai</h2>
+        <p style="color:var(--muted); font-size:0.92rem; margin:8px 0 14px;">
+          Jadwal bacaan harian dimulai pada <strong id="startDateLabelText"></strong>. Sembari menunggu hari pertama, silakan lengkapi profil kreasi Anda dan pasang pengingat kalender di tab <strong>Profil & Capaian</strong>!
         </p>
-        <div id="cameraControls">
-          <button type="button" class="btn-outline btn-sm" id="openCamBtn" onclick="startCamera()">📷 Buka Kamera</button>
-          <button type="button" class="btn-accent btn-sm hidden" id="captureBtn" onclick="capturePhoto()">📸 Ambil Foto Bukti</button>
-          <button type="button" class="btn-outline btn-sm hidden" id="retakeBtn" onclick="startCamera()">🔄 Ulangi Foto</button>
+        <button class="btn-outline btn-sm" onclick="switchTab('profile')">Buka Profil & Pasang Pengingat</button>
+      </div>
+
+      <div id="todayReadingCard" class="card">
+        <div class="reading-banner">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent);" id="todayDayLabel">BACAAN HARI INI</div>
+          <h3 id="todayPassageTitle">-</h3>
+          <p id="todayDateText">-</p>
         </div>
 
-        <video id="videoPreview" class="hidden" autoplay playsinline></video>
-        <canvas id="snapshotCanvas" class="hidden"></canvas>
-        <div id="photoSavedBadge" class="hidden" style="margin-top:8px; font-size:0.82rem; color:var(--success); font-weight:600;">
-          ✔️ Foto bukti dengan stempel waktu berhasil diambil!
+        <div id="alreadyDoneNotice" class="badge-info hidden">
+          ✅ Puji Tuhan! Bacaan hari ini sudah selesai dan tercatat ke sistem pengajar. Sampai jumpa di bacaan besok!
+        </div>
+
+        <!-- Focus Timer -->
+        <div id="timerContainer" class="timer-box">
+          <div style="font-size:0.85rem; font-weight:600;">⏱️ Timer Fokus Membaca (Minimum 5 Menit)</div>
+          <div class="timer-display" id="timerDisplay">05:00</div>
+          <div class="timer-status" id="timerStatus">
+            Tekan tombol di bawah saat Anda mulai membuka Alkitab.
+          </div>
+          <div style="margin-top:10px;">
+            <button id="startTimerBtn" class="btn-accent" onclick="toggleTimer()">Mulai Baca & Jalankan Timer</button>
+          </div>
+          <div class="timer-rules">
+            <strong>Aturan Mode Fokus 5 Menit:</strong><br />
+            • Selama 5 menit berjalan, waktu mulai & status aktif Anda terpantau langsung oleh pengajar.<br />
+            • Dilarang meninggalkan web ini (pindah tab/aplikasi lain). Jika layar HP mati otomatis (*sleep/lock*) saat membaca Alkitab cetak, timer <strong>tetap berjalan</strong>.
+          </div>
+        </div>
+
+        <div id="pasteWarning" class="badge-alert hidden">
+          ⚠️ Fitur tempel (Paste) dinonaktifkan! Ketik sendiri ayat berkesan dan refleksi Anda dengan jujur.
+        </div>
+
+        <!-- Reflection Form -->
+        <label for="keyVerseInput">1. Satu Ayat Paling Berkesan Hari Ini (Ketik Manual)</label>
+        <input type="text" id="keyVerseInput" autocomplete="off" spellcheck="false" placeholder="Ketik langsung ayat yang paling berkesan bagi Anda..." />
+        <div class="anti-paste-note">🔒 Ketik manual — tidak diperbolehkan copy-paste.</div>
+
+        <label for="reflectionInput">2. Ringkasan / Pelajaran Iman Hari Ini (Ketik Manual, Minimal 20 karakter)</label>
+        <textarea id="reflectionInput" rows="3" autocomplete="off" spellcheck="false" placeholder="Tuliskan apa yang Tuhan ajarkan kepada Anda lewat bacaan hari ini..."></textarea>
+        <div class="anti-paste-note">🔒 Ketik manual — tidak diperbolehkan copy-paste.</div>
+
+        <!-- Camera Check-in -->
+        <label>3. Foto Bukti Membaca Alkitab (Kamera Langsung + Watermark Otomatis)</label>
+        <div class="camera-area">
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:8px;">
+            Ambil foto selfie bersama Alkitab yang sedang dibaca. Stempel Nama, Jam WIB, dan Pasal otomatis terpasang.
+          </p>
+          <div id="cameraControls">
+            <button type="button" class="btn-outline btn-sm" id="openCamBtn" onclick="startCamera()">📷 Buka Kamera</button>
+            <button type="button" class="btn-accent btn-sm hidden" id="captureBtn" onclick="capturePhoto()">📸 Ambil Foto Bukti</button>
+            <button type="button" class="btn-outline btn-sm hidden" id="retakeBtn" onclick="startCamera()">🔄 Ulangi Foto</button>
+          </div>
+
+          <video id="videoPreview" class="hidden" autoplay playsinline></video>
+          <canvas id="snapshotCanvas" class="hidden"></canvas>
+          <div id="photoSavedBadge" class="hidden" style="margin-top:8px; font-size:0.82rem; color:var(--success); font-weight:600;">
+            ✔️ Foto bukti dengan stempel waktu berhasil diambil!
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button id="submitReadingBtn" class="btn-success" style="flex:1;" onclick="submitDailyReading()" disabled>
+            ✅ Konfirmasi Selesai Membaca
+          </button>
+          <button id="downloadReceiptBtn" class="btn-outline hidden" onclick="downloadWatermarkImage()">
+            ⬇️ Unduh Foto Bukti
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PROFIL KREASI, TEMA DASHBOARD & CAPAIAN BACAAN -->
+    <div id="tabProfile" class="hidden">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+          <div class="profile-hero">
+            <div class="avatar-circle" id="profileAvatarPreview">🕊️</div>
+            <div>
+              <h2 id="profileNameTitle" style="margin-bottom:2px;">Nama Peserta</h2>
+              <p id="profileBioPreview" style="font-size:0.86rem; color:var(--muted); font-style:italic;">"Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku."</p>
+            </div>
+          </div>
+          <button class="btn-outline btn-sm" onclick="handleLogout()">Keluar Akun</button>
+        </div>
+
+        <hr style="border:0; border-top:1px solid var(--border); margin:16px 0;" />
+
+        <h3 style="font-size:0.98rem; color:var(--primary); margin-bottom:10px;">🎨 Kreasikan Tampilan Dashboard Anda</h3>
+        <label>Pilih Tema Warna Dashboard</label>
+        <div class="theme-swatches" style="margin-bottom:14px;">
+          <div class="swatch" style="background:#1e3a8a;" title="Biru Klasik" onclick="setDashboardTheme('default')"></div>
+          <div class="swatch" style="background:#065f46;" title="Hijau Zamrud" onclick="setDashboardTheme('emerald')"></div>
+          <div class="swatch" style="background:#9a3412;" title="Senja Hangat" onclick="setDashboardTheme('sunset')"></div>
+          <div class="swatch" style="background:#581c87;" title="Ungu Kerajaan" onclick="setDashboardTheme('royal')"></div>
+          <div class="swatch" style="background:#0f172a;" title="Mode Gelap" onclick="setDashboardTheme('dark')"></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 110px 1fr; gap:10px;">
+          <div>
+            <label for="avatarSelect">Ikon Profil</label>
+            <select id="avatarSelect">
+              <option value="🕊️">🕊️ Merpati</option>
+              <option value="📖">📖 Alkitab</option>
+              <option value="✝️">✝️ Salib</option>
+              <option value="🌿">🌿 Ranting</option>
+              <option value="🔥">🔥 Api Roh</option>
+              <option value="⭐">⭐ Bintang</option>
+              <option value="🦁">🦁 Singa</option>
+              <option value="🐑">🐑 Domba</option>
+            </select>
+          </div>
+          <div>
+            <label for="mottoInput">Motto Iman / Ayat Pegangan Pribadi</label>
+            <input type="text" id="mottoInput" maxlength="100" placeholder="Tulis motto iman atau ayat favorit Anda..." />
+          </div>
+        </div>
+        <button type="button" class="btn-sm" onclick="saveProfileCustomization()">💾 Simpan Kreasi Profil</button>
+      </div>
+
+      <!-- Capaian Bacaan -->
+      <div class="card">
+        <h2>🏆 Capaian & Lencana Bacaan Saya</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="val" id="statCompleted">0 / 180</div>
+            <div class="lbl">Hari Selesai</div>
+          </div>
+          <div class="stat-box">
+            <div class="val" id="statPercent">0%</div>
+            <div class="lbl">Persentase</div>
+          </div>
+          <div class="stat-box">
+            <div class="val" id="statChapters">0 / 1189</div>
+            <div class="lbl">Pasal Terbaca</div>
+          </div>
+          <div class="stat-box">
+            <div class="val" id="statBadge">🌱 Pemula</div>
+            <div class="lbl">Lencana Iman</div>
+          </div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBarFill"></div>
         </div>
       </div>
 
-      <!-- Submit Button -->
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button id="submitReadingBtn" class="btn-success" style="flex:1;" onclick="submitDailyReading()" disabled>
-          ✅ Konfirmasi Selesai Membaca
-        </button>
-        <button id="downloadReceiptBtn" class="btn-outline hidden" onclick="downloadWatermarkImage()">
-          ⬇️ Unduh Foto Bukti
-        </button>
+      <!-- Pengingat Kalender -->
+      <div class="reminder-card">
+        <div>
+          <h3 style="font-size:0.95rem; color:var(--success);">🔔 Pengingat Kalender Harian (180 Hari)</h3>
+          <p style="font-size:0.8rem; color:var(--muted);">Pasang pengingat harian ke kalender HP Anda agar tidak terlewat.</p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <select id="reminderHourSelect" style="width:auto; margin-bottom:0; padding:7px 10px; font-size:0.82rem;">
+            <option value="06">06:00 WIB</option>
+            <option value="07">07:00 WIB</option>
+            <option value="19" selected>19:00 WIB</option>
+            <option value="20">20:00 WIB</option>
+            <option value="21">21:00 WIB</option>
+          </select>
+          <button type="button" class="btn-success btn-sm" onclick="activateCalendarReminder()">📅 Pasang Pengingat</button>
+        </div>
       </div>
-      <p id="validationHint" style="font-size:0.78rem; color:var(--muted); margin-top:8px; text-align:center;">
-        Syarat aktif tombol selesai: Timer 5 menit selesai + Ayat & refleksi terisi + Foto bukti diambil.
-      </p>
+    </div>
+
+    <!-- TAB 3: RUANG DISKUSI BERSAMA -->
+    <div id="tabDiscuss" class="hidden">
+      <div class="card">
+        <h2>💬 Ruang Diskusi Katekisasi</h2>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+          Bagikan pertanyaan seputar bacaan Alkitab atau saling menguatkan dengan teman-teman dan pengajar.
+        </p>
+        <textarea id="discussInput" rows="3" placeholder="Tulis pertanyaan atau tanggapan diskusi Anda di sini..."></textarea>
+        <div style="display:flex; gap:8px; justify-content:space-between; flex-wrap:wrap;">
+          <button type="button" onclick="postCommunityMessage('DISKUSI')">📨 Kirim ke Ruang Diskusi</button>
+          <button type="button" class="btn-outline btn-sm" onclick="loadCommunityFeed()">🔄 Segarkan Diskusi</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; color:var(--primary); margin-bottom:12px;">Percakapan Terbaru</h3>
+        <div id="discussFeedList">
+          <p style="font-size:0.85rem; color:var(--muted);">Memuat diskusi...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: RUANG CURHAT PRIVAT (PESERTA <-> PENGAJAR) -->
+    <div id="tabCurhat" class="hidden">
+      <div class="card">
+        <h2>🤍 Ruang Curhat & Konseling Privat</h2>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+          Ruang aman dan rahasia. Pesan curhat atau pokok doa yang Anda kirim di sini <strong>hanya dapat dibaca oleh Anda dan Pengajar/Pembina</strong> (tidak tampil ke peserta lain).
+        </p>
+        <textarea id="curhatInput" rows="4" placeholder="Ceritakan pergumulan, kendala membaca, atau pokok doa pribadi Anda kepada pengajar..."></textarea>
+        <div style="display:flex; gap:8px; justify-content:space-between; flex-wrap:wrap;">
+          <button type="button" class="btn-accent" onclick="postCommunityMessage('CURHAT')">🔒 Kirim Curhat ke Pengajar</button>
+          <button type="button" class="btn-outline btn-sm" onclick="loadCommunityFeed()">🔄 Cek Balasan Pengajar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1rem; color:var(--primary); margin-bottom:12px;">Riwayat Curhat & Balasan Pengajar</h3>
+        <div id="curhatFeedList">
+          <p style="font-size:0.85rem; color:var(--muted);">Belum ada pesan curhat.</p>
+        </div>
+      </div>
     </div>
 
   </div>
+
+  <!-- ===================================================================== -->
+  <!-- TEACHER / PENGAJAR LIVE MONITORING & COUNSELING DASHBOARD             -->
+  <!-- ===================================================================== -->
+  <div id="teacherDashboard" class="hidden">
+    <div class="card" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <div>
+        <div style="font-size:0.8rem; color:var(--accent); font-weight:700;">PANEL PENGAJAR & PEMBINA</div>
+        <strong style="font-size:1.1rem; color:var(--primary);">Pemantauan Langsung & Komunikasi Peserta</strong>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-sm" onclick="loadTeacherMonitorData()">🔄 Segarkan Data</button>
+        <button class="btn-outline btn-sm" onclick="handleLogout()">Keluar</button>
+      </div>
+    </div>
+
+    <!-- Live Monitoring Table -->
+    <div class="card">
+      <h2>📡 Pemantauan Waktu Sesi Baca Peserta (Hari Ini)</h2>
+      <p style="font-size:0.83rem; color:var(--muted); margin-bottom:12px;">
+        Menampilkan waktu mulai membaca, status fokus, hingga waktu selesai dari masing-masing ke-17 peserta.
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="monitor-table">
+          <thead>
+            <tr>
+              <th>ID & Nama Peserta</th>
+              <th>Status Sesi</th>
+              <th>Mulai Baca</th>
+              <th>Selesai Baca</th>
+              <th>Total Hari</th>
+            </tr>
+          </thead>
+          <tbody id="teacherMonitorBody">
+            <tr><td colspan="5">Memuat data pemantauan...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Teacher Inbox: Curhat & Diskusi -->
+    <div class="card">
+      <h2>💌 Kotak Masuk Curhat Privat & Diskusi Peserta</h2>
+      <p style="font-size:0.83rem; color:var(--muted); margin-bottom:12px;">
+        Balas pesan curhat atau pertanyaan diskusi peserta langsung dari sini.
+      </p>
+      <div id="teacherMessagesList">
+        <p style="font-size:0.85rem; color:var(--muted);">Memuat pesan peserta...</p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
   // =========================================================================
-  // 1. KONFIGURASI PROGRAM, WEBHOOK GOOGLE SHEETS & HASH PIN SHA-256
+  // 1. KONFIGURASI VERSI, JADWAL MULAI BARU & WEBHOOK GOOGLE SHEETS
   // =========================================================================
-  const START_DATE_STR = "2026-11-16"; // Tanggal mulai: 16 November 2026
+  const APP_SCHEMA_VERSION = "v2.0"; // Melindungi data lama agar tidak tertimpa saat pembaruan kode
+  const START_DATE_STR = "2026-11-30"; // Jadwal mulai diperbarui ke Senin, 30 November 2026
   const TOTAL_DAYS = 180;
-  const MIN_READ_SECONDS = 300; // 5 menit (300 detik). Ubah ke 10 jika ingin uji coba cepat!
+  const MIN_READ_SECONDS = 300;
+  const APP_PUBLIC_URL = "https://ricandosinabutarr-lang.github.io/Baca-Alkitab/";
+  const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzMOzdt3I_cfFiZ0paZnd9M_xV4xVHEKZt847JkogZbfEpE7Enejh16JtNV20zlCtlIyg/exec";
 
-  // URL Web App Google Apps Script (/exec) yang sudah terhubung ke Spreadsheet Anda:
-  const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyDIgBIAZjGW-ihiW4jn_YLoUcAB1Y8GCs-ABDTlKS0S2LoaC4OeefhtAGidUJwBb9UIQ/exec";
-
-  // Daftar 17 Peserta Katekisasi (SHA-256 Hash Valid untuk PIN: 202601 s/d 202617)
-  const PARTICIPANTS = [
-    { id: "P01", name: "Abednego Simbolon", pinHash: "9f36d8b555d70dad5cdf620ac2a8fc36f6ffc0a44a58fb1ba600bd230b4ee660" },
-    { id: "P02", name: "Andro Hesekiel Hamonangan Silaen", pinHash: "4b058b90b7acc6b114f055c7c2c41fd3794cd96df95bdc6d72a9d550152670e7" },
-    { id: "P03", name: "Angelqhy Hamamean Bagasdini Nainggolan", pinHash: "0994a71b9023280041ab0f8aae752721c686a9c815ad7bcc5ebc81fcbc66ab0a" },
-    { id: "P04", name: "Elin Schiko Sipahutar", pinHash: "0d89db834202eddee0cf35f07bdbb6840de449295316166bf2b820ae6d90a0fa" },
-    { id: "P05", name: "Ferdy Silaen", pinHash: "dc091e2936acae646078be694deac4d22a533e19cdd67be2efa6d812fcc41184" },
-    { id: "P06", name: "Gracela Tobing", pinHash: "95af67d61da0e73b5affb6f38ffb5951fc897d8acacd85dd4b4ea5d765f65a0c" },
-    { id: "P07", name: "Hizkia Natanael Pardosi", pinHash: "a89879152a0418eaa00b25eb33278cfa3d866e92e2c8ff0ac2f3395452549bc6" },
-    { id: "P08", name: "Jesica Immanuela Silitonga", pinHash: "a1c006f8a56662cdaedb396a57101cb44c8ff0a3bc68e480c689d43e112295e3" },
-    { id: "P09", name: "Jhon Daniel Haloho", pinHash: "8ef010864e74211363dbf0be43457a9869da3c2f715e31620ecbf2e37c826208" },
-    { id: "P10", name: "Josua Febriano Makmur Silaen", pinHash: "eff3fdd3f486565f12baf0df16bd88f07f5652e3489aa047b92d78c57b9cac8c" },
-    { id: "P11", name: "Mikansia Yemima Sianturi", pinHash: "797230c2ff79ea02acb5539c2a1759f53170dec0756dd339783c68ad545418b4" },
-    { id: "P12", name: "Nicholas Arnoldy Munthe", pinHash: "0ece2784eec73d4d46899f5f57dabb898323c67746e51f7ba10b171a7dd1c7ef" },
-    { id: "P13", name: "Rivaldo Firman Lubis", pinHash: "60d0f0c4b8543332d8c376a48a8d42488391674898cfb4002cecd784c88c7dd6" },
-    { id: "P14", name: "Silvia Vanessa Asima Sitorus", pinHash: "6c4af33f5c78fd6066f42a885f3fb05ec18fde2c809e177879ba73d904cb2a30" },
-    { id: "P15", name: "Stevani Yulianthy Sihotang", pinHash: "72aa5d655b9974c8ca948623f07622cbf474f6f6ef78c99753d41f2152140486" },
-    { id: "P16", name: "Yosef Aristovel Siagian", pinHash: "eefd20ff5edb2182ff2bd7fe0e4a687b1a14586dfcd767ccf9631ac8454d26c0" },
-    { id: "P17", name: "Zhyo Hutabarat", pinHash: "9f5a94cf16d7a37e5f91e69931c15834c6a6a4b7cc38c9478ff977ff4ea695a6" }
+  // Akun Pengajar (PIN: 202699) + 17 Peserta (PIN: 202601 s/d 202617)
+  const ACCOUNTS = [
+    { id: "ADMIN", role: "teacher", name: "👨‍🏫 Pengajar / Pembina Katekisasi", pinHash: "4a20678d7125244ada7cf0f8b03ef8256fcedeaf7a30b0daf4e05a9e995d367e" },
+    { id: "P01", role: "student", name: "Abednego Simbolon", pinHash: "9f36d8b555d70dad5cdf620ac2a8fc36f6ffc0a44a58fb1ba600bd230b4ee660" },
+    { id: "P02", role: "student", name: "Andro Hesekiel Hamonangan Silaen", pinHash: "4b058b90b7acc6b114f055c7c2c41fd3794cd96df95bdc6d72a9d550152670e7" },
+    { id: "P03", role: "student", name: "Angelqhy Hamamean Bagasdini Nainggolan", pinHash: "0994a71b9023280041ab0f8aae752721c686a9c815ad7bcc5ebc81fcbc66ab0a" },
+    { id: "P04", role: "student", name: "Elin Schiko Sipahutar", pinHash: "0d89db834202eddee0cf35f07bdbb6840de449295316166bf2b820ae6d90a0fa" },
+    { id: "P05", role: "student", name: "Ferdy Silaen", pinHash: "dc091e2936acae646078be694deac4d22a533e19cdd67be2efa6d812fcc41184" },
+    { id: "P06", role: "student", name: "Gracela Tobing", pinHash: "95af67d61da0e73b5affb6f38ffb5951fc897d8acacd85dd4b4ea5d765f65a0c" },
+    { id: "P07", role: "student", name: "Hizkia Natanael Pardosi", pinHash: "a89879152a0418eaa00b25eb33278cfa3d866e92e2c8ff0ac2f3395452549bc6" },
+    { id: "P08", role: "student", name: "Jesica Immanuela Silitonga", pinHash: "a1c006f8a56662cdaedb396a57101cb44c8ff0a3bc68e480c689d43e112295e3" },
+    { id: "P09", role: "student", name: "Jhon Daniel Haloho", pinHash: "8ef010864e74211363dbf0be43457a9869da3c2f715e31620ecbf2e37c826208" },
+    { id: "P10", role: "student", name: "Josua Febriano Makmur Silaen", pinHash: "eff3fdd3f486565f12baf0df16bd88f07f5652e3489aa047b92d78c57b9cac8c" },
+    { id: "P11", role: "student", name: "Mikansia Yemima Sianturi", pinHash: "797230c2ff79ea02acb5539c2a1759f53170dec0756dd339783c68ad545418b4" },
+    { id: "P12", role: "student", name: "Nicholas Arnoldy Munthe", pinHash: "0ece2784eec73d4d46899f5f57dabb898323c67746e51f7ba10b171a7dd1c7ef" },
+    { id: "P13", role: "student", name: "Rivaldo Firman Lubis", pinHash: "60d0f0c4b8543332d8c376a48a8d42488391674898cfb4002cecd784c88c7dd6" },
+    { id: "P14", role: "student", name: "Silvia Vanessa Asima Sitorus", pinHash: "6c4af33f5c78fd6066f42a885f3fb05ec18fde2c809e177879ba73d904cb2a30" },
+    { id: "P15", role: "student", name: "Stevani Yulianthy Sihotang", pinHash: "72aa5d655b9974c8ca948623f07622cbf474f6f6ef78c99753d41f2152140486" },
+    { id: "P16", role: "student", name: "Yosef Aristovel Siagian", pinHash: "eefd20ff5edb2182ff2bd7fe0e4a687b1a14586dfcd767ccf9631ac8454d26c0" },
+    { id: "P17", role: "student", name: "Zhyo Hutabarat", pinHash: "9f5a94cf16d7a37e5f91e69931c15834c6a6a4b7cc38c9478ff977ff4ea695a6" }
   ];
 
-  // =========================================================================
-  // 2. DATA 66 KITAB ALKITAB (TOTAL 1.189 PASAL) & GENERATOR 180 HARI
-  // =========================================================================
   const BIBLE_BOOKS = [
     ["Kejadian",50],["Keluaran",40],["Imamat",27],["Bilangan",36],["Ulangan",34],
     ["Yosua",24],["Hakim-hakim",21],["Rut",4],["1 Samuel",31],["2 Samuel",24],
@@ -425,7 +743,7 @@
     });
 
     const plan = [];
-    const totalChapters = allChapters.length; // 1189
+    const totalChapters = allChapters.length;
     const startDate = new Date(START_DATE_STR + "T00:00:00+07:00");
 
     for (let day = 1; day <= TOTAL_DAYS; day++) {
@@ -445,8 +763,7 @@
       plan.push({
         day,
         dateISO: dateObj.toISOString().slice(0, 10),
-        dateFormatted: dateObj.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "short", year: "numeric" }),
-        shortDate: dateObj.toLocaleDateString("id-ID", { day: "numeric", month: "short" }),
+        dateFormatted: dateObj.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" }),
         passage: label,
         chapterCount: slice.length
       });
@@ -456,40 +773,30 @@
 
   const READING_PLAN = build180DayPlan();
 
-  // =========================================================================
-  // 3. STATE & FUNGSI UTILITAS KEAMANAN
-  // =========================================================================
   let currentUser = null;
-  let selectedDay = 1;
-  let currentRangeFilter = "all";
+  let activeDayNum = 1;
+  let sessionStartTimeWIB = null;
   let timerSecondsLeft = MIN_READ_SECONDS;
   let timerInterval = null;
   let isTimerRunning = false;
+  let timerTargetEndTimestamp = null;
+  let lastTickTimestamp = null;
+  let wakeLockSentinel = null;
   let cameraStream = null;
   let capturedDataURL = null;
+  let pasteWarningTimeout = null;
 
   const selectEl = document.getElementById("participantSelect");
-  PARTICIPANTS.forEach(p => {
+  ACCOUNTS.forEach(p => {
     const opt = document.createElement("option");
     opt.value = p.id;
     opt.textContent = p.name;
     selectEl.appendChild(opt);
   });
 
-  async function sha256Hex(message) {
-    const msgUint8 = new TextEncoder().encode(message);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-  }
-
-  function getTodayWIB() {
-    const now = new Date();
-    const wibOffset = 7 * 60;
-    const localTime = new Date(now.getTime() + (wibOffset + now.getTimezoneOffset()) * 60000);
-    return localTime.toISOString().slice(0, 10);
-  }
-
+  // =========================================================================
+  // 2. PENYIMPANAN AMAN LOKAL (NON-DESTRUKTIF SAAT PEMBARUAN WEB)
+  // =========================================================================
   function getUserProgress() {
     if (!currentUser) return {};
     const raw = localStorage.getItem(`bible_progress_${currentUser.id}`);
@@ -501,10 +808,158 @@
     localStorage.setItem(`bible_progress_${currentUser.id}`, JSON.stringify(data));
   }
 
+  function getUserProfilePrefs() {
+    if (!currentUser) return { theme: "default", avatar: "🕊️", motto: "" };
+    const raw = localStorage.getItem(`bible_profile_${currentUser.id}`);
+    return raw ? JSON.parse(raw) : { theme: "default", avatar: "🕊️", motto: "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku." };
+  }
+
+  function setDashboardTheme(themeName) {
+    document.body.className = themeName === "default" ? "" : `theme-${themeName}`;
+    if (currentUser && currentUser.role === "student") {
+      const prefs = getUserProfilePrefs();
+      prefs.theme = themeName;
+      localStorage.setItem(`bible_profile_${currentUser.id}`, JSON.stringify(prefs));
+    }
+  }
+
+  function saveProfileCustomization() {
+    if (!currentUser) return;
+    const prefs = getUserProfilePrefs();
+    prefs.avatar = document.getElementById("avatarSelect").value;
+    prefs.motto = document.getElementById("mottoInput").value.trim() || "Firman-Mu itu pelita bagi kakiku dan terang bagi jalanku.";
+    localStorage.setItem(`bible_profile_${currentUser.id}`, JSON.stringify(prefs));
+    applyProfileUI();
+    alert("Kreasi profil dan tampilan dashboard Anda berhasil disimpan!");
+  }
+
+  function applyProfileUI() {
+    if (!currentUser || currentUser.role !== "student") return;
+    const prefs = getUserProfilePrefs();
+    setDashboardTheme(prefs.theme || "default");
+    document.getElementById("avatarSelect").value = prefs.avatar || "🕊️";
+    document.getElementById("mottoInput").value = prefs.motto || "";
+    document.getElementById("profileAvatarPreview").textContent = prefs.avatar || "🕊️";
+    document.getElementById("profileNameTitle").textContent = `${currentUser.name} (${currentUser.id})`;
+    document.getElementById("profileBioPreview").textContent = `"${prefs.motto}"`;
+  }
+
   // =========================================================================
-  // 4. LOGIN (SHA-256) & LOGOUT
+  // 3. NAVIGASI TAB DASHBOARD PESERTA
   // =========================================================================
-  document.getElementById("pinInput").addEventListener("keypress", (e) => {
+  function switchTab(tabName) {
+    const map = {
+      today: ["tabToday", "tabBtnToday"],
+      profile: ["tabProfile", "tabBtnProfile"],
+      discuss: ["tabDiscuss", "tabBtnDiscuss"],
+      curhat: ["tabCurhat", "tabBtnCurhat"]
+    };
+    Object.keys(map).forEach(k => {
+      document.getElementById(map[k][0]).classList.toggle("hidden", k !== tabName);
+      document.getElementById(map[k][1]).classList.toggle("active", k === tabName);
+    });
+    if (tabName === "discuss" || tabName === "curhat") {
+      loadCommunityFeed();
+    }
+  }
+
+  // =========================================================================
+  // 4. KALENDER PENGINGAT (.ICS)
+  // =========================================================================
+  function activateCalendarReminder() {
+    if (!currentUser) return;
+    const hourStr = document.getElementById("reminderHourSelect").value || "19";
+
+    const lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Program Baca Alkitab 180 Hari Katekisasi//ID",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+      `X-WR-CALNAME:Baca Alkitab 180 Hari - ${currentUser.name}`,
+      "X-WR-TIMEZONE:Asia/Jakarta"
+    ];
+
+    READING_PLAN.forEach(item => {
+      const ymd = item.dateISO.replace(/-/g, "");
+      const endHour = String(Math.min(23, parseInt(hourStr, 10) + 1)).padStart(2, "0");
+      lines.push(
+        "BEGIN:VEVENT",
+        `UID:baca-alkitab-h${item.day}-${currentUser.id}@katekisasi2026`,
+        `DTSTAMP:20261127T000000Z`,
+        `DTSTART;TZID=Asia/Jakarta:${ymd}T${hourStr}0000`,
+        `DTEND;TZID=Asia/Jakarta:${ymd}T${endHour}0000`,
+        `SUMMARY:📖 Baca Alkitab Katekisasi (Hari ${item.day})`,
+        `DESCRIPTION:Halo ${currentUser.name}, saatnya sesi bacaan hari ini. Buka tautan berikut untuk melihat ayat hari ini & memulai timer 5 menit:\\n${APP_PUBLIC_URL}`,
+        `URL:${APP_PUBLIC_URL}`,
+        "BEGIN:VALARM",
+        "TRIGGER:-PT0M",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Waktunya Baca Alkitab Katekisasi!",
+        "END:VALARM",
+        "END:VEVENT"
+      );
+    });
+
+    lines.push("END:VCALENDAR");
+    const blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `Pengingat_Baca_Alkitab_${currentUser.id}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    alert("Pengingat kalender berhasil diunduh! Buka file tersebut dan pilih 'Simpan ke Kalender' agar HP Anda mengingatkan setiap hari.");
+  }
+
+  // =========================================================================
+  // 5. ANTI-PASTE PADA FORM REFLEKSI
+  // =========================================================================
+  function showAntiPasteAlert() {
+    const warnEl = document.getElementById("pasteWarning");
+    warnEl.classList.remove("hidden");
+    if (pasteWarningTimeout) clearTimeout(pasteWarningTimeout);
+    pasteWarningTimeout = setTimeout(() => warnEl.classList.add("hidden"), 4500);
+  }
+
+  function enforceManualTypingOnly(el) {
+    el.addEventListener("paste", e => { e.preventDefault(); showAntiPasteAlert(); });
+    el.addEventListener("drop", e => { e.preventDefault(); showAntiPasteAlert(); });
+    el.addEventListener("contextmenu", e => { e.preventDefault(); showAntiPasteAlert(); });
+    el.addEventListener("keydown", e => {
+      if (((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "v") || (e.shiftKey && e.key === "Insert")) {
+        e.preventDefault();
+        showAntiPasteAlert();
+      }
+    });
+  }
+  enforceManualTypingOnly(document.getElementById("keyVerseInput"));
+  enforceManualTypingOnly(document.getElementById("reflectionInput"));
+
+  // =========================================================================
+  // 6. AUTENTIKASI & INISIALISASI SESI
+  // =========================================================================
+  async function sha256Hex(message) {
+    const msgUint8 = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  function getTodayWIB() {
+    const now = new Date();
+    const wibOffset = 7 * 60;
+    const localTime = new Date(now.getTime() + (wibOffset + now.getTimezoneOffset()) * 60000);
+    return localTime.toISOString().slice(0, 10);
+  }
+
+  function getNowTimeWIB() {
+    return new Date().toLocaleTimeString("id-ID", { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", second: "2-digit" }) + " WIB";
+  }
+
+  document.getElementById("pinInput").addEventListener("keypress", e => {
     if (e.key === "Enter") handleLogin();
   });
 
@@ -515,131 +970,95 @@
     const loginBtn = document.getElementById("loginBtn");
 
     if (!pid || !pin) {
-      errEl.textContent = "Silakan pilih nama peserta dan masukkan PIN 6-digit.";
+      errEl.textContent = "Silakan pilih akun Anda dan masukkan PIN 6-digit.";
       errEl.classList.remove("hidden");
       return;
     }
 
     if (!window.crypto || !window.crypto.subtle) {
-      errEl.textContent = "Harap buka aplikasi melalui tautan HTTPS GitHub Pages agar sistem keamanan PIN berfungsi.";
+      errEl.textContent = "Buka aplikasi melalui tautan HTTPS GitHub Pages agar keamanan PIN berfungsi.";
       errEl.classList.remove("hidden");
       return;
     }
 
     loginBtn.disabled = true;
-    loginBtn.textContent = "Memverifikasi PIN...";
+    loginBtn.textContent = "Memverifikasi...";
 
-    const user = PARTICIPANTS.find(p => p.id === pid);
+    const user = ACCOUNTS.find(p => p.id === pid);
     const inputHash = await sha256Hex(pin);
 
     loginBtn.disabled = false;
-    loginBtn.textContent = "Masuk ke Jadwal Bacaan";
+    loginBtn.textContent = "Masuk ke Ruang Bacaan";
 
     if (!user || user.pinHash !== inputHash) {
-      errEl.textContent = "Nama peserta atau PIN 6-digit tidak sesuai. Silakan periksa kembali.";
+      errEl.textContent = "Nama atau PIN 6-digit tidak sesuai. Silakan periksa kembali.";
       errEl.classList.remove("hidden");
       return;
     }
 
     errEl.classList.add("hidden");
     currentUser = user;
-    document.getElementById("userNameDisplay").textContent = `${user.name} (${user.id})`;
     document.getElementById("loginCard").classList.add("hidden");
+
+    if (user.role === "teacher") {
+      document.getElementById("teacherDashboard").classList.remove("hidden");
+      loadTeacherMonitorData();
+      return;
+    }
+
+    // Student Login
     document.getElementById("appDashboard").classList.remove("hidden");
-
-    const todayStr = getTodayWIB();
-    const todayPlan = READING_PLAN.find(p => p.dateISO === todayStr);
-    selectedDay = todayPlan ? todayPlan.day : 1;
-
-    renderCalendar("all");
-    selectDay(selectedDay);
+    applyProfileUI();
+    initTodayReadingView();
     updateStats();
+    switchTab("today");
   }
 
   function handleLogout() {
+    if (isTimerRunning && timerSecondsLeft > 0) {
+      if (!confirm("Timer baca 5 menit masih berjalan. Yakin ingin keluar sekarang?")) return;
+    }
     stopTimer();
     stopCamera();
     currentUser = null;
+    setDashboardTheme("default");
     document.getElementById("pinInput").value = "";
     document.getElementById("appDashboard").classList.add("hidden");
+    document.getElementById("teacherDashboard").classList.add("hidden");
     document.getElementById("loginCard").classList.remove("hidden");
   }
 
   // =========================================================================
-  // 5. KALENDER & STATISTIK
+  // 7. TAMPILAN BACAAN HARI INI SAJA (TANPA MEMBUKA DAFTAR 180 HARI)
   // =========================================================================
-  function updateStats() {
-    const progress = getUserProgress();
-    const completedDays = Object.keys(progress).map(Number);
-    const totalChaptersDone = completedDays.reduce((acc, d) => {
-      const item = READING_PLAN.find(p => p.day === d);
-      return acc + (item ? item.chapterCount : 0);
-    }, 0);
-
-    document.getElementById("statCompleted").textContent = `${completedDays.length} / ${TOTAL_DAYS}`;
-    document.getElementById("statPercent").textContent = `${Math.round((completedDays.length / TOTAL_DAYS) * 100)}%`;
-    document.getElementById("statChapters").textContent = `${totalChaptersDone} / 1189`;
-  }
-
-  function filterCalendar(range) {
-    currentRangeFilter = range;
-    renderCalendar(range);
-  }
-
-  function renderCalendar(range = currentRangeFilter) {
-    const grid = document.getElementById("calendarGrid");
-    grid.innerHTML = "";
-    const progress = getUserProgress();
-    const todayStr = getTodayWIB();
-
-    let filtered = READING_PLAN;
-    if (range.startsWith("month")) {
-      const m = parseInt(range.replace("month", ""), 10);
-      const minD = (m - 1) * 30 + 1;
-      const maxD = m * 30;
-      filtered = READING_PLAN.filter(p => p.day >= minD && p.day <= maxD);
-    }
-
-    filtered.forEach(item => {
-      const cell = document.createElement("div");
-      cell.className = "day-cell";
-      if (progress[item.day]) {
-        cell.classList.add("done");
-      } else if (item.dateISO === todayStr) {
-        cell.classList.add("today");
-      } else if (item.dateISO < todayStr) {
-        cell.classList.add("missed");
-      }
-
-      if (item.day === selectedDay) {
-        cell.classList.add("active-selected");
-      }
-
-      cell.innerHTML = `
-        <div class="d-num">Hari ${item.day} ${progress[item.day] ? "✓" : ""}</div>
-        <div class="d-date">${item.shortDate}</div>
-        <div class="d-ref" title="${item.passage}">${item.passage}</div>
-      `;
-      cell.onclick = () => selectDay(item.day);
-      grid.appendChild(cell);
-    });
-  }
-
-  function selectDay(dayNum) {
+  function initTodayReadingView() {
     stopTimer();
     stopCamera();
     capturedDataURL = null;
 
-    selectedDay = dayNum;
-    const item = READING_PLAN.find(p => p.day === dayNum);
+    const todayStr = getTodayWIB();
+    const todayItem = READING_PLAN.find(p => p.dateISO === todayStr);
+
+    if (!todayItem && todayStr < START_DATE_STR) {
+      document.getElementById("preStartNotice").classList.remove("hidden");
+      document.getElementById("todayReadingCard").classList.add("hidden");
+      document.getElementById("startDateLabelText").textContent = READING_PLAN[0].dateFormatted;
+      return;
+    }
+
+    document.getElementById("preStartNotice").classList.add("hidden");
+    document.getElementById("todayReadingCard").classList.remove("hidden");
+
+    const item = todayItem || READING_PLAN[READING_PLAN.length - 1];
+    activeDayNum = item.day;
+
     const progress = getUserProgress();
-    const saved = progress[dayNum];
+    const saved = progress[activeDayNum];
 
-    document.getElementById("selectedDayLabel").textContent = `HARI KE-${item.day} DARI ${TOTAL_DAYS}`;
-    document.getElementById("selectedPassageTitle").textContent = item.passage;
-    document.getElementById("selectedDateText").textContent = `${item.dateFormatted} • Target: ${item.chapterCount} Pasal`;
+    document.getElementById("todayDayLabel").textContent = `BACAAN HARI INI • HARI KE-${item.day} DARI ${TOTAL_DAYS}`;
+    document.getElementById("todayPassageTitle").textContent = item.passage;
+    document.getElementById("todayDateText").textContent = `${item.dateFormatted} • Target: ${item.chapterCount} Pasal`;
 
-    // Reset Camera UI
     document.getElementById("videoPreview").classList.add("hidden");
     document.getElementById("snapshotCanvas").classList.add("hidden");
     document.getElementById("openCamBtn").classList.remove("hidden");
@@ -647,6 +1066,7 @@
     document.getElementById("retakeBtn").classList.add("hidden");
     document.getElementById("photoSavedBadge").classList.add("hidden");
     document.getElementById("downloadReceiptBtn").classList.add("hidden");
+    document.getElementById("pasteWarning").classList.add("hidden");
 
     if (saved) {
       document.getElementById("alreadyDoneNotice").classList.remove("hidden");
@@ -657,7 +1077,7 @@
       document.getElementById("reflectionInput").disabled = true;
       document.getElementById("openCamBtn").disabled = true;
       document.getElementById("submitReadingBtn").disabled = true;
-      document.getElementById("submitReadingBtn").textContent = "✅ Sudah Diselesaikan";
+      document.getElementById("submitReadingBtn").textContent = "✅ Selesai Hari Ini";
     } else {
       document.getElementById("alreadyDoneNotice").classList.add("hidden");
       document.getElementById("timerContainer").classList.remove("hidden");
@@ -671,57 +1091,165 @@
       updateTimerDisplay();
       document.getElementById("startTimerBtn").textContent = "Mulai Baca & Jalankan Timer";
       document.getElementById("startTimerBtn").disabled = false;
-      document.getElementById("timerStatus").textContent = "Tekan tombol di bawah saat mulai membaca. Tetap di layar ini agar timer berjalan.";
+      document.getElementById("timerStatus").textContent = "Tekan tombol di bawah saat Anda mulai membuka Alkitab.";
       document.getElementById("submitReadingBtn").textContent = "✅ Konfirmasi Selesai Membaca";
       checkFormValidity();
     }
+  }
 
-    renderCalendar(currentRangeFilter);
+  function updateStats() {
+    const progress = getUserProgress();
+    const completedDays = Object.keys(progress).map(Number);
+    const totalChaptersDone = completedDays.reduce((acc, d) => {
+      const item = READING_PLAN.find(p => p.day === d);
+      return acc + (item ? item.chapterCount : 0);
+    }, 0);
+
+    const pct = Math.round((completedDays.length / TOTAL_DAYS) * 100);
+    document.getElementById("statCompleted").textContent = `${completedDays.length} / ${TOTAL_DAYS}`;
+    document.getElementById("statPercent").textContent = `${pct}%`;
+    document.getElementById("statChapters").textContent = `${totalChaptersDone} / 1189`;
+    document.getElementById("progressBarFill").style.width = `${pct}%`;
+
+    let badge = "🌱 Pemula";
+    if (completedDays.length >= 150) badge = "👑 Setia Sampai Akhir";
+    else if (completedDays.length >= 90) badge = "🔥 Tekun Membaca";
+    else if (completedDays.length >= 30) badge = "🌿 Bertumbuh";
+    else if (completedDays.length >= 7) badge = "✨ Konsisten";
+    document.getElementById("statBadge").textContent = badge;
   }
 
   // =========================================================================
-  // 6. TIMER FOKUS LAYAR (ANTI-PINDAH TAB)
+  // 8. TIMER FOKUS + PEMANTAUAN LANGSUNG KE PENGAJAR (START / RESET / DONE)
   // =========================================================================
+  function sendActivityPing(eventType, extra = {}) {
+    if (!GOOGLE_SHEETS_WEBHOOK_URL || !currentUser || currentUser.role !== "student") return;
+    const item = READING_PLAN.find(p => p.day === activeDayNum);
+    fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "SESSION_PING",
+        eventType,
+        participantId: currentUser.id,
+        participantName: currentUser.name,
+        day: activeDayNum,
+        date: getTodayWIB(),
+        passage: item ? item.passage : "",
+        timeWIB: getNowTimeWIB(),
+        ...extra
+      })
+    }).catch(() => {});
+  }
+
   function updateTimerDisplay() {
     const mins = String(Math.floor(timerSecondsLeft / 60)).padStart(2, "0");
     const secs = String(timerSecondsLeft % 60).padStart(2, "0");
     document.getElementById("timerDisplay").textContent = `${mins}:${secs}`;
   }
 
-  function toggleTimer() {
-    if (isTimerRunning) {
-      stopTimer();
-      document.getElementById("startTimerBtn").textContent = "Lanjutkan Timer Baca";
-      document.getElementById("timerStatus").textContent = "Timer dijeda.";
-      return;
-    }
+  async function requestWakeLock() {
+    try {
+      if ("wakeLock" in navigator) {
+        wakeLockSentinel = await navigator.wakeLock.request("screen");
+      }
+    } catch (e) {}
+  }
 
+  function releaseWakeLock() {
+    if (wakeLockSentinel) {
+      wakeLockSentinel.release().catch(() => {});
+      wakeLockSentinel = null;
+    }
+  }
+
+  function resetTimerBecauseLeftWeb(reasonText) {
+    if (!isTimerRunning || timerSecondsLeft <= 0) return;
+    stopTimer();
+    timerSecondsLeft = MIN_READ_SECONDS;
+    updateTimerDisplay();
+    document.getElementById("startTimerBtn").disabled = false;
+    document.getElementById("startTimerBtn").textContent = "Mulai Ulang Timer 5 Menit";
+    document.getElementById("timerStatus").textContent = `🚫 ${reasonText} Timer diulang dari 05:00.`;
+    sendActivityPing("RESET_LEFT_WEB", { note: reasonText });
+    checkFormValidity();
+  }
+
+  window.addEventListener("beforeunload", e => {
+    if (isTimerRunning && timerSecondsLeft > 0) {
+      e.preventDefault();
+      e.returnValue = "Timer baca 5 menit masih berjalan.";
+      return e.returnValue;
+    }
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!isTimerRunning || timerSecondsLeft <= 0) return;
+    if (document.hidden) {
+      lastTickTimestamp = Date.now();
+    } else {
+      const now = Date.now();
+      const remaining = Math.max(0, Math.ceil((timerTargetEndTimestamp - now) / 1000));
+      timerSecondsLeft = remaining;
+      updateTimerDisplay();
+      if (timerSecondsLeft <= 0) {
+        completeTimerSuccessfully();
+      } else {
+        document.getElementById("timerStatus").textContent = "⏳ Fokus membaca aktif (layar sempat mati, waktu tetap dihitung)...";
+        requestWakeLock();
+      }
+    }
+  });
+
+  window.addEventListener("blur", () => {
+    if (!isTimerRunning || timerSecondsLeft <= 0) return;
+    setTimeout(() => {
+      if (!document.hidden && !document.hasFocus() && isTimerRunning && timerSecondsLeft > 0) {
+        resetTimerBecauseLeftWeb("Anda terdeteksi meninggalkan halaman web!");
+      }
+    }, 800);
+  });
+
+  function completeTimerSuccessfully() {
+    stopTimer();
+    timerSecondsLeft = 0;
+    updateTimerDisplay();
+    document.getElementById("timerStatus").textContent = "✅ Target waktu baca minimum 5 menit telah terpenuhi!";
+    document.getElementById("startTimerBtn").disabled = true;
+    document.getElementById("startTimerBtn").textContent = "Waktu Tercapai";
+    sendActivityPing("TIMER_5MIN_REACHED");
+    checkFormValidity();
+  }
+
+  function toggleTimer() {
+    if (isTimerRunning) return;
     isTimerRunning = true;
-    document.getElementById("startTimerBtn").textContent = "Jeda Sementara";
-    document.getElementById("timerStatus").textContent = "⏳ Sedang menghitung waktu baca... Jangan tutup atau pindah tab.";
+    sessionStartTimeWIB = getNowTimeWIB();
+    lastTickTimestamp = Date.now();
+    timerTargetEndTimestamp = lastTickTimestamp + timerSecondsLeft * 1000;
+    requestWakeLock();
+
+    sendActivityPing("STARTED_READING", { startTimeWIB: sessionStartTimeWIB });
+
+    document.getElementById("startTimerBtn").disabled = true;
+    document.getElementById("startTimerBtn").textContent = "⏳ Sedang Membaca (Terkunci)...";
+    document.getElementById("timerStatus").textContent = "⏳ Fokus membaca aktif! Waktu mulai Anda telah tercatat ke pengajar.";
 
     timerInterval = setInterval(() => {
-      if (document.hidden) {
-        document.getElementById("timerStatus").textContent = "⚠️ Timer dijeda otomatis karena Anda berpindah layar/aplikasi!";
-        return;
-      }
-      document.getElementById("timerStatus").textContent = "⏳ Fokus membaca aktif... Teruskan membaca Alkitab Anda.";
-      if (timerSecondsLeft > 0) {
-        timerSecondsLeft--;
-        updateTimerDisplay();
-      }
+      const now = Date.now();
+      const remaining = Math.max(0, Math.ceil((timerTargetEndTimestamp - now) / 1000));
+      timerSecondsLeft = remaining;
+      updateTimerDisplay();
       if (timerSecondsLeft <= 0) {
-        stopTimer();
-        document.getElementById("timerStatus").textContent = "✅ Target waktu baca minimum 5 menit telah terpenuhi!";
-        document.getElementById("startTimerBtn").disabled = true;
-        document.getElementById("startTimerBtn").textContent = "Waktu Tercapai";
-        checkFormValidity();
+        completeTimerSuccessfully();
       }
     }, 1000);
   }
 
   function stopTimer() {
     isTimerRunning = false;
+    releaseWakeLock();
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
@@ -729,7 +1257,7 @@
   }
 
   // =========================================================================
-  // 7. KAMERA TERBUKA + STEMPEL WATERMARK OTOMATIS
+  // 9. KAMERA TERBUKA + WATERMARK OTOMATIS
   // =========================================================================
   async function startCamera() {
     try {
@@ -747,3 +1275,292 @@
       document.getElementById("retakeBtn").classList.add("hidden");
       document.getElementById("captureBtn").classList.remove("hidden");
     } catch (err) {
+      alert("Gagal mengakses kamera. Pastikan Anda memberikan izin kamera pada browser.");
+    }
+  }
+
+  function stopCamera() {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+  }
+
+  function capturePhoto() {
+    const video = document.getElementById("videoPreview");
+    const canvas = document.getElementById("snapshotCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const item = READING_PLAN.find(p => p.day === activeDayNum);
+    const nowText = new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" }) + " WIB";
+
+    ctx.fillStyle = "rgba(15, 23, 42, 0.8)";
+    ctx.fillRect(0, canvas.height - 82, canvas.width, 82);
+
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 16px sans-serif";
+    ctx.fillText(`📖 ${currentUser.name} (${currentUser.id})`, 14, canvas.height - 56);
+
+    ctx.fillStyle = "#fbbf24";
+    ctx.font = "bold 14px sans-serif";
+    ctx.fillText(`Hari ke-${item.day}: ${item.passage}`, 14, canvas.height - 34);
+
+    ctx.fillStyle = "#cbd5e1";
+    ctx.font = "12px sans-serif";
+    ctx.fillText(`Terverifikasi: ${nowText}`, 14, canvas.height - 14);
+
+    capturedDataURL = canvas.toDataURL("image/jpeg", 0.8);
+
+    stopCamera();
+    video.classList.add("hidden");
+    canvas.classList.remove("hidden");
+    document.getElementById("captureBtn").classList.add("hidden");
+    document.getElementById("retakeBtn").classList.remove("hidden");
+    document.getElementById("photoSavedBadge").classList.remove("hidden");
+    document.getElementById("downloadReceiptBtn").classList.remove("hidden");
+    checkFormValidity();
+  }
+
+  function downloadWatermarkImage() {
+    if (!capturedDataURL) return;
+    const a = document.createElement("a");
+    a.href = capturedDataURL;
+    a.download = `Bukti_Baca_H${activeDayNum}_${currentUser.name.replace(/\s+/g, "_")}.jpg`;
+    a.click();
+  }
+
+  document.getElementById("keyVerseInput").addEventListener("input", checkFormValidity);
+  document.getElementById("reflectionInput").addEventListener("input", checkFormValidity);
+
+  function checkFormValidity() {
+    const verse = document.getElementById("keyVerseInput").value.trim();
+    const refl = document.getElementById("reflectionInput").value.trim();
+    document.getElementById("submitReadingBtn").disabled = !(timerSecondsLeft <= 0 && verse.length >= 5 && refl.length >= 20 && Boolean(capturedDataURL));
+  }
+
+  async function submitDailyReading() {
+    const submitBtn = document.getElementById("submitReadingBtn");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "⏳ Mengirim Laporan & Foto...";
+
+    const item = READING_PLAN.find(p => p.day === activeDayNum);
+    const verse = document.getElementById("keyVerseInput").value.trim();
+    const reflection = document.getElementById("reflectionInput").value.trim();
+    const finishTimeWIB = getNowTimeWIB();
+    const timestamp = new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
+
+    const progress = getUserProgress();
+    progress[activeDayNum] = {
+      completedAt: timestamp,
+      startTimeWIB: sessionStartTimeWIB || finishTimeWIB,
+      finishTimeWIB,
+      passage: item.passage,
+      verse,
+      reflection
+    };
+    saveUserProgress(progress);
+
+    if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      try {
+        await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "SUBMIT_READING",
+            participantId: currentUser.id,
+            participantName: currentUser.name,
+            day: item.day,
+            date: item.dateISO,
+            passage: item.passage,
+            verse,
+            reflection,
+            startTimeWIB: sessionStartTimeWIB || finishTimeWIB,
+            finishTimeWIB,
+            timestamp,
+            photoBase64: capturedDataURL
+          })
+        });
+      } catch (e) {}
+    }
+
+    alert(`Terima kasih ${currentUser.name}! Bacaan Hari ke-${item.day} (${item.passage}) berhasil tercatat.`);
+    updateStats();
+    initTodayReadingView();
+  }
+
+  // =========================================================================
+  // 10. RUANG DISKUSI & RUANG CURHAT PRIVAT (SINKRON GOOGLE SHEETS)
+  // =========================================================================
+  async function postCommunityMessage(channel) {
+    const inputEl = channel === "DISKUSI" ? document.getElementById("discussInput") : document.getElementById("curhatInput");
+    const text = inputEl.value.trim();
+    if (text.length < 5) {
+      alert("Tuliskan pesan minimal 5 karakter.");
+      return;
+    }
+
+    const msgObj = {
+      msgId: "MSG_" + Date.now(),
+      channel,
+      participantId: currentUser.id,
+      participantName: currentUser.name,
+      text,
+      timestamp: new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" }) + " WIB",
+      teacherReply: ""
+    };
+
+    // Simpan cadangan lokal agar langsung tampil
+    const localMsgs = JSON.parse(localStorage.getItem("bible_community_msgs") || "[]");
+    localMsgs.unshift(msgObj);
+    localStorage.setItem("bible_community_msgs", JSON.stringify(localMsgs));
+    inputEl.value = "";
+    renderCommunityLists(localMsgs);
+
+    if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "POST_MESSAGE", ...msgObj })
+      }).catch(() => {});
+    }
+  }
+
+  async function loadCommunityFeed() {
+    let allMsgs = JSON.parse(localStorage.getItem("bible_community_msgs") || "[]");
+    if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      try {
+        const res = await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?action=GET_FEED`);
+        const data = await res.json();
+        if (Array.isArray(data.messages)) {
+          allMsgs = data.messages;
+          localStorage.setItem("bible_community_msgs", JSON.stringify(allMsgs));
+        }
+      } catch (e) {}
+    }
+    renderCommunityLists(allMsgs);
+  }
+
+  function renderCommunityLists(msgs) {
+    const discussEl = document.getElementById("discussFeedList");
+    const curhatEl = document.getElementById("curhatFeedList");
+
+    const discussMsgs = msgs.filter(m => m.channel === "DISKUSI");
+    const myCurhatMsgs = msgs.filter(m => m.channel === "CURHAT" && currentUser && m.participantId === currentUser.id);
+
+    discussEl.innerHTML = discussMsgs.length
+      ? discussMsgs.map(m => `
+          <div class="post-item">
+            <div class="post-meta"><strong>${m.participantName}</strong><span>${m.timestamp}</span></div>
+            <div>${escapeHtml(m.text)}</div>
+            ${m.teacherReply ? `<div class="teacher-reply"><strong>Balasan Pengajar:</strong> ${escapeHtml(m.teacherReply)}</div>` : ""}
+          </div>
+        `).join("")
+      : `<p style="font-size:0.85rem; color:var(--muted);">Belum ada diskusi. Jadilah yang pertama berbagi!</p>`;
+
+    curhatEl.innerHTML = myCurhatMsgs.length
+      ? myCurhatMsgs.map(m => `
+          <div class="post-item">
+            <div class="post-meta"><strong>Pesan Pribadi Anda</strong><span>${m.timestamp}</span></div>
+            <div>${escapeHtml(m.text)}</div>
+            ${m.teacherReply
+              ? `<div class="teacher-reply"><strong>Balasan Pengajar:</strong> ${escapeHtml(m.teacherReply)}</div>`
+              : `<div style="font-size:0.78rem; color:var(--muted); margin-top:6px;">⏳ Menunggu tanggapan pengajar...</div>`}
+          </div>
+        `).join("")
+      : `<p style="font-size:0.85rem; color:var(--muted);">Belum ada catatan curhat pribadi.</p>`;
+  }
+
+  // =========================================================================
+  // 11. PANEL PENGAJAR: PEMANTAUAN REAL-TIME & BALAS PESAN
+  // =========================================================================
+  async function loadTeacherMonitorData() {
+    const tbody = document.getElementById("teacherMonitorBody");
+    const msgContainer = document.getElementById("teacherMessagesList");
+    const students = ACCOUNTS.filter(a => a.role === "student");
+
+    let remoteSessions = {};
+    let remoteMessages = JSON.parse(localStorage.getItem("bible_community_msgs") || "[]");
+
+    if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      try {
+        const res = await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?action=GET_MONITOR&date=${getTodayWIB()}`);
+        const data = await res.json();
+        if (data.sessions) remoteSessions = data.sessions;
+        if (Array.isArray(data.messages)) remoteMessages = data.messages;
+      } catch (e) {}
+    }
+
+    tbody.innerHTML = students.map(s => {
+      const info = remoteSessions[s.id] || {};
+      let badge = `<span class="status-pill pill-idle">Belum Mulai</span>`;
+      if (info.status === "SELESAI") badge = `<span class="status-pill pill-done">✅ Selesai</span>`;
+      else if (info.status === "SEDANG_BACA") badge = `<span class="status-pill pill-live">⏳ Sedang Baca</span>`;
+      else if (info.status === "RESET") badge = `<span class="status-pill" style="background:#fee2e2;color:#991b1b;">⚠️ Keluar Web</span>`;
+
+      return `
+        <tr>
+          <td><strong>${s.name}</strong><br/><span style="color:var(--muted);font-size:0.75rem;">${s.id}</span></td>
+          <td>${badge}</td>
+          <td>${info.startTime || "-"}</td>
+          <td>${info.finishTime || "-"}</td>
+          <td><strong>${info.totalDone || 0}</strong> / 180</td>
+        </tr>
+      `;
+    }).join("");
+
+    msgContainer.innerHTML = remoteMessages.length
+      ? remoteMessages.map(m => `
+          <div class="post-item">
+            <div class="post-meta">
+              <span><strong>${m.participantName}</strong> • <span style="color:var(--accent);font-weight:700;">[${m.channel}]</span></span>
+              <span>${m.timestamp}</span>
+            </div>
+            <div style="margin-bottom:8px;">${escapeHtml(m.text)}</div>
+            ${m.teacherReply
+              ? `<div class="teacher-reply"><strong>Balasan Anda:</strong> ${escapeHtml(m.teacherReply)}</div>`
+              : `<div style="display:flex; gap:8px; margin-top:8px;">
+                   <input type="text" id="reply_${m.msgId}" style="margin-bottom:0; padding:7px 10px; font-size:0.85rem;" placeholder="Tulis balasan pengajar..." />
+                   <button type="button" class="btn-success btn-sm" onclick="sendTeacherReply('${m.msgId}')">Balas</button>
+                 </div>`
+            }
+          </div>
+        `).join("")
+      : `<p style="font-size:0.85rem; color:var(--muted);">Belum ada pesan diskusi maupun curhat dari peserta.</p>`;
+  }
+
+  async function sendTeacherReply(msgId) {
+    const input = document.getElementById(`reply_${msgId}`);
+    const replyText = input ? input.value.trim() : "";
+    if (!replyText) return;
+
+    const localMsgs = JSON.parse(localStorage.getItem("bible_community_msgs") || "[]");
+    const target = localMsgs.find(m => m.msgId === msgId);
+    if (target) target.teacherReply = replyText;
+    localStorage.setItem("bible_community_msgs", JSON.stringify(localMsgs));
+
+    if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "REPLY_MESSAGE", msgId, teacherReply: replyText })
+      }).catch(() => {});
+    }
+
+    alert("Balasan pengajar berhasil dikirim!");
+    loadTeacherMonitorData();
+  }
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, s => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s]));
+  }
+</script>
+
+</body>
+</html>
