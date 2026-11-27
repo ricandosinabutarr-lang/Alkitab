@@ -1626,7 +1626,7 @@
 
     function updateTimerDisplay() {
       const mins = String(Math.floor(timerSecondsLeft / 60)).padStart(2, "0");
-      const secs = String(timerSecondsLeft % 60)).padStart(2, "0");
+      const secs = String(timerSecondsLeft % 60).padStart(2, "0");
       document.getElementById("timerDisplay").textContent = `${mins}:${secs}`;
     }
 
