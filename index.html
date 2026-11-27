@@ -22,7 +22,6 @@
       --shadow: 0 18px 55px rgba(22, 49, 41, 0.08);
     }
 
-    /* Tema Kreasi Profil Peserta */
     body.accent-ocean {
       --green: #1e3a8a;
       --green2: #2563eb;
@@ -77,7 +76,6 @@
     button:disabled { opacity: 0.55; cursor: not-allowed; }
     .hidden { display: none !important; }
 
-    /* Mentor Impersonation Bar */
     .impersonate-bar {
       background: #9f7531;
       color: #fff;
@@ -100,7 +98,6 @@
       font-weight: 700;
     }
 
-    /* Top Bar */
     .top {
       background: var(--top-grad);
       color: #fff;
@@ -122,18 +119,17 @@
     }
     .brand strong { display: block; letter-spacing: 0.13em; font-size: 13px; }
     .brand small { color: #d3dfd8; font-size: 11px; letter-spacing: 0.1em; }
-    .top-actions { display: flex; gap: 9px; align-items: center; }
+    .top-actions { display: flex; gap: 8px; align-items: center; }
     .iconbtn {
       border: 1px solid #ffffff44;
       background: #ffffff12;
       color: #fff;
       border-radius: 12px;
-      padding: 9px 13px;
+      padding: 9px 12px;
       font-size: 13px;
       font-weight: 600;
     }
 
-    /* Shell & Welcome */
     .shell { max-width: 1180px; margin: 0 auto; padding: 30px 22px 70px; }
     .eyebrow {
       font-size: 11px;
@@ -154,7 +150,6 @@
     .welcome p { color: var(--muted); margin: 0; }
     .date { color: var(--muted); font-size: 13px; text-align: right; }
 
-    /* Login Card */
     .login-wrap { max-width: 480px; margin: 28px auto; }
     .panel {
       background: var(--surface);
@@ -165,7 +160,6 @@
       margin-bottom: 16px;
     }
 
-    /* Main Workspace Layout */
     .layout { display: grid; grid-template-columns: 235px 1fr; gap: 22px; }
     .side {
       background: var(--surface);
@@ -200,7 +194,6 @@
       color: var(--muted);
     }
 
-    /* Hero Banner */
     .content { min-width: 0; }
     .hero {
       background: var(--hero-grad);
@@ -230,7 +223,6 @@
     .hero-stat b { display: block; font: 42px Georgia; }
     .hero-stat span { font-size: 11px; color: #d6e4dc; letter-spacing: 0.08em; text-transform: uppercase; }
 
-    /* Stats & Grid */
     .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 16px 0; }
     .stat {
       background: var(--surface);
@@ -264,7 +256,6 @@
     }
     body.dark .pill { color: #d6e4dc; }
 
-    /* Creative Profile Studio */
     .profile-card-preview {
       display: flex;
       align-items: center;
@@ -297,7 +288,6 @@
     }
     .swatch-btn.active { box-shadow: 0 0 0 2.5px var(--gold); transform: scale(1.1); }
 
-    /* Reading Box & Timer */
     .reading {
       background: #f8f8f3;
       border: 1px solid var(--line);
@@ -340,7 +330,6 @@
       border-top: 1px dashed #d8c7a4;
     }
 
-    /* Buttons & Forms */
     .primary {
       border: 0;
       background: var(--green);
@@ -398,7 +387,6 @@
     body.dark .notice.success { color: #cbe6d1; }
     .notice.danger { background: #fef2f2; border-color: #fecaca; color: var(--danger); }
 
-    /* Camera Box */
     .cam-box {
       border: 1.5px dashed var(--line);
       border-radius: 15px;
@@ -416,7 +404,6 @@
       background: #000;
     }
 
-    /* Week Grid */
     .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; }
     .day {
       border: 1px solid var(--line);
@@ -431,7 +418,6 @@
     body.dark .day.done { color: #d6e4dc; }
     .day.today { border-color: var(--gold); box-shadow: inset 0 0 0 1.5px var(--gold); }
 
-    /* Quote & Community Feed */
     .quote { font: italic 18px/1.5 Georgia, serif; color: var(--ink); }
     .quote small { display: block; font: 12px system-ui; color: var(--muted); margin-top: 10px; }
 
@@ -459,7 +445,6 @@
       font-size: 13px;
     }
 
-    /* Monitor Table */
     .table-wrap { overflow-x: auto; }
     table.monitor { width: 100%; border-collapse: collapse; font-size: 13px; }
     table.monitor th, table.monitor td {
@@ -499,9 +484,9 @@
 
     @media (max-width: 820px) {
       .layout { grid-template-columns: 1fr; }
-      .side { position: static; padding: 8px; overflow-x: auto; }
-      .nav { display: flex; min-width: max-content; }
-      .nav button { padding: 10px 12px; }
+      .side { position: static; padding: 10px; }
+      .nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+      .nav button { padding: 10px 11px; font-size: 13px; }
       .side-note { display: none; }
       .columns { grid-template-columns: 1fr; }
       .welcome { align-items: start; flex-direction: column; }
@@ -519,13 +504,11 @@
 </head>
 <body>
 
-  <!-- BANNER MODE PENGAJAR MEMBUKA AKUN PESERTA -->
   <div id="impersonateBanner" class="impersonate-bar hidden">
     <span id="impersonateLabel">🔑 Mode Akses Penuh Pembimbing: Anda sedang membuka akun peserta.</span>
     <button type="button" onclick="exitStudentImpersonation()">← Kembali ke Ruang Pembimbing</button>
   </div>
 
-  <!-- TOP HEADER -->
   <header class="top">
     <div class="brand">
       <div class="mark" id="topBrandIcon">✝</div>
@@ -535,7 +518,8 @@
       </div>
     </div>
     <div class="top-actions">
-      <button class="iconbtn" id="themeBtn" aria-label="Ganti tema">◐ <span class="label">Mode Gelap</span></button>
+      <button class="iconbtn hidden" id="quickProfileBtn" onclick="showView('profile')">✦ <span class="label">Profil</span></button>
+      <button class="iconbtn" id="themeBtn" aria-label="Ganti tema">◐ <span class="label">Tema</span></button>
       <button class="iconbtn hidden" id="logoutBtn" onclick="handleLogout()">↪ <span class="label">Keluar</span></button>
     </div>
   </header>
@@ -550,9 +534,7 @@
       <div class="date" id="todayDate"></div>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- PORTAL LOGIN                                                        -->
-    <!-- =================================================================== -->
+    <!-- PORTAL LOGIN -->
     <div id="loginSection" class="login-wrap">
       <div class="panel">
         <div class="panel-head">
@@ -577,15 +559,13 @@
       </div>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- DASHBOARD PESERTA                                                   -->
-    <!-- =================================================================== -->
+    <!-- DASHBOARD PESERTA -->
     <div id="studentLayout" class="layout hidden">
       <aside class="side">
         <nav class="nav" aria-label="Navigasi utama">
           <button class="active" data-view="home"><i class="ico">⌂</i>Ringkasan</button>
           <button data-view="reading"><i class="ico">▤</i>Bacaan & Jurnal</button>
-          <button data-view="profile"><i class="ico">✦</i>Ruang kreasi & profil</button>
+          <button data-view="profile"><i class="ico">✦</i>Ruang kreasi profil</button>
           <button data-view="progress"><i class="ico">▥</i>Perjalanan 180 hari</button>
           <button data-view="community"><i class="ico">◎</i>Ruang komunitas</button>
           <button data-view="curhat"><i class="ico">♧</i>Ruang curhat privat</button>
@@ -658,7 +638,7 @@
                 <small>Mazmur 119:105 · TB</small>
               </div>
               <div style="margin-top:14px;">
-                <button class="secondary btn-sm" onclick="showView('profile')">✦ Ubah Kreasi Profil</button>
+                <button class="secondary btn-sm" onclick="showView('profile')">✦ Buka Ruang Kreasi Profil</button>
               </div>
             </div>
           </div>
@@ -672,7 +652,7 @@
           </div>
         </section>
 
-        <!-- VIEW 2: BACAAN HARI INI, TIMER FOKUS & JURNAL REFLEKSI -->
+        <!-- VIEW 2: BACAAN HARI INI -->
         <section class="view" id="reading">
           <div id="preStartNotice" class="panel hidden">
             <div class="panel-head">
@@ -680,7 +660,7 @@
               <span class="pill">PERSIAPAN</span>
             </div>
             <p class="muted">
-              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat berkreasi di <strong>Ruang kreasi & profil</strong> atau memasang pengingat kalender.
+              Jadwal bacaan harian dimulai pada <strong id="startDateLabelText">Senin, 30 November 2026</strong>. Sembari menunggu hari pertama, Anda dapat berkreasi di <strong>Ruang kreasi profil</strong> atau memasang pengingat kalender.
             </p>
             <div class="actions">
               <button class="primary" onclick="showView('profile')">✦ Buka Ruang Kreasi Profil</button>
@@ -704,7 +684,6 @@
               ✅ Puji Tuhan! Bacaan, jurnal refleksi, dan foto bukti hari ini sudah tersimpan ke Google Sheets & Google Drive.
             </div>
 
-            <!-- Focus Timer -->
             <div id="timerContainer" class="timer-card">
               <div class="eyebrow">TIMER FOKUS MEMBACA (MINIMUM 5 MENIT)</div>
               <div class="timer-clock" id="timerDisplay">05:00</div>
@@ -721,7 +700,6 @@
               ⚠️ Fitur tempel (Paste) dinonaktifkan! Silakan ketik sendiri ayat berkesan dan refleksi Anda.
             </div>
 
-            <!-- Reflection Fields -->
             <label class="formlabel" for="keyVerseInput">1. Ayat yang paling berkesan hari ini</label>
             <input class="field" id="keyVerseInput" autocomplete="off" spellcheck="false" placeholder="Ketik langsung satu ayat yang paling berkesan..." />
             <div class="hint-lock">🔒 Ketik manual — tidak diperbolehkan copy-paste.</div>
@@ -730,7 +708,6 @@
             <textarea class="field" id="reflectionInput" autocomplete="off" spellcheck="false" placeholder="Tuliskan pemahaman, pergumulan, atau langkah iman yang ingin dilakukan..."></textarea>
             <div class="hint-lock">🔒 Ketik manual — tidak diperbolehkan copy-paste.</div>
 
-            <!-- Live Camera Check-in -->
             <label class="formlabel">3. Foto bukti membaca Alkitab (Wajib untuk tersimpan ke Google Sheets & Drive)</label>
             <div class="cam-box">
               <p class="muted" style="font-size:12.5px; margin:0 0 10px;">
@@ -759,15 +736,15 @@
           </div>
         </section>
 
-        <!-- VIEW 3: RUANG KREASI & PROFIL PESERTA -->
+        <!-- VIEW 3: RUANG KREASI PROFIL -->
         <section class="view" id="profile">
           <div class="panel">
             <div class="panel-head">
-              <h3>Ruang kreasi & profil peserta</h3>
+              <h3>Ruang kreasi profil peserta</h3>
               <span class="pill">TAMPILAN PRIBADI</span>
             </div>
             <p class="muted" style="font-size:13px;">
-              Sesuaikan ikon identitas, nuansa warna ruang bacaan, dan ayat pegangan iman Anda. Perubahan tersimpan otomatis ke profil Anda.
+              Sesuaikan ikon identitas, nuansa warna ruang bacaan, dan ayat pegangan iman Anda. Perubahan tersimpan otomatis ke profil Anda dan Google Sheets.
             </p>
 
             <div class="profile-card-preview">
@@ -814,7 +791,7 @@
           </div>
         </section>
 
-        <!-- VIEW 4: PERJALANAN 180 HARI & KALENDER PENGINGAT -->
+        <!-- VIEW 4: PERJALANAN 180 HARI -->
         <section class="view" id="progress">
           <div class="panel">
             <div class="panel-head">
@@ -853,7 +830,7 @@
           </div>
         </section>
 
-        <!-- VIEW 5: RUANG KOMUNITAS (DISKUSI KELOMPOK) -->
+        <!-- VIEW 5: RUANG KOMUNITAS -->
         <section class="view" id="community">
           <div class="panel">
             <div class="panel-head">
@@ -910,9 +887,7 @@
       </section>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- DASHBOARD PEMBIMBING (RUANG PEMBIMBING + AKSES PENUH AKUN PESERTA)  -->
-    <!-- =================================================================== -->
+    <!-- DASHBOARD PEMBIMBING -->
     <div id="mentorDashboard" class="hidden">
       <div class="hero" style="margin-bottom:18px;">
         <div>
@@ -964,13 +939,10 @@
   </main>
 
   <script>
-    // =========================================================================
-    // 1. KONFIGURASI SISTEM & WEBHOOK GOOGLE SHEETS
-    // =========================================================================
     const START_DATE_STR = "2026-11-30";
     const TOTAL_DAYS = 180;
     const MIN_READ_SECONDS = 300;
-    const APP_PUBLIC_URL = "https://ricandosinabutarr-lang.github.io/Baca-Alkitab/";
+    const APP_PUBLIC_URL = "https://ricandosinabutarr-lang.github.io/Alkitab/";
     const GOOGLE_SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwEQQx-G8tcO0DBL93JRo305pI5CrTS-Ov8jD7xo0_0GxE7IScja33-JV1_7cM6m5trfQ/exec";
 
     const ACCOUNTS = [
@@ -1060,9 +1032,6 @@
     let capturedDataURL = null;
     let pasteWarningTimeout = null;
 
-    // =========================================================================
-    // 2. INISIALISASI UI & NAVIGASI
-    // =========================================================================
     const nowInit = new Date();
     document.getElementById("todayDate").textContent = nowInit.toLocaleDateString("id-ID", {
       weekday: "long", day: "numeric", month: "long", year: "numeric"
@@ -1094,9 +1063,6 @@
       if (id === "community" || id === "curhat") loadCommunityFeed();
     }
 
-    // =========================================================================
-    // 3. RUANG KREASI PROFIL & SINKRONISASI GOOGLE SHEETS
-    // =========================================================================
     function getUserProgress() {
       if (!currentUser) return {};
       const raw = localStorage.getItem(`bible_progress_${currentUser.id}`);
@@ -1210,9 +1176,6 @@
       } catch (e) {}
     }
 
-    // =========================================================================
-    // 4. AUTENTIKASI & AKSES PENUH PENGAJAR KE AKUN PESERTA
-    // =========================================================================
     async function sha256Hex(message) {
       const msgUint8 = new TextEncoder().encode(message);
       const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
@@ -1288,6 +1251,7 @@
       stopCamera();
       applyAccentClass("forest");
       document.getElementById("topBrandIcon").textContent = "✝";
+      document.getElementById("quickProfileBtn").classList.add("hidden");
       document.getElementById("impersonateBanner").classList.add("hidden");
       document.getElementById("studentLayout").classList.add("hidden");
       document.getElementById("welcomeHeading").textContent = "Selamat datang, Pembimbing.";
@@ -1299,6 +1263,7 @@
     function openStudentWorkspace(studentUser, isMentorAccess = false) {
       currentUser = studentUser;
       document.getElementById("mentorDashboard").classList.add("hidden");
+      document.getElementById("quickProfileBtn").classList.remove("hidden");
       document.getElementById("welcomeHeading").textContent = `Selamat datang, ${studentUser.name}.`;
       document.getElementById("welcomeSub").textContent = "Berakar dalam Firman, bertumbuh dalam iman, berbuah dalam kehidupan.";
       document.getElementById("studentLayout").classList.remove("hidden");
@@ -1343,6 +1308,7 @@
       mentorOriginalUser = null;
       applyAccentClass("forest");
       document.getElementById("topBrandIcon").textContent = "✝";
+      document.getElementById("quickProfileBtn").classList.add("hidden");
       document.getElementById("pinInput").value = "";
       document.getElementById("impersonateBanner").classList.add("hidden");
       document.getElementById("studentLayout").classList.add("hidden");
@@ -1352,9 +1318,6 @@
       document.getElementById("welcomeHeading").textContent = "Selamat datang dalam perjalanan Firman.";
     }
 
-    // =========================================================================
-    // 5. PENGATURAN BACAAN HARI INI & STATISTIK RINGKASAN
-    // =========================================================================
     function initTodayReadingView() {
       stopTimer();
       stopCamera();
@@ -1484,9 +1447,6 @@
       }
     }
 
-    // =========================================================================
-    // 6. ANTI-PASTE PADA AYAT & REFLEKSI
-    // =========================================================================
     function showAntiPasteAlert() {
       const warnEl = document.getElementById("pasteWarning");
       warnEl.classList.remove("hidden");
@@ -1508,9 +1468,6 @@
     enforceManualTypingOnly(document.getElementById("keyVerseInput"));
     enforceManualTypingOnly(document.getElementById("reflectionInput"));
 
-    // =========================================================================
-    // 7. TIMER FOKUS + PEMANTAUAN LANGSUNG KE PEMBIMBING
-    // =========================================================================
     function sendActivityPing(eventType, extra = {}) {
       if (!GOOGLE_SHEETS_WEBHOOK_URL || !currentUser || currentUser.role !== "student") return;
       const item = READING_PLAN.find(p => p.day === activeDayNum);
@@ -1636,9 +1593,6 @@
       }
     }
 
-    // =========================================================================
-    // 8. KAMERA LANGSUNG + WATERMARK OTOMATIS + PENGIRIMAN FOTO KE GS
-    // =========================================================================
     async function startCamera() {
       try {
         stopCamera();
@@ -1773,9 +1727,6 @@
       initTodayReadingView();
     }
 
-    // =========================================================================
-    // 9. KALENDER PENGINGAT (.ICS)
-    // =========================================================================
     function activateCalendarReminder() {
       if (!currentUser) return;
       const hourStr = document.getElementById("reminderHourSelect").value || "19";
@@ -1823,9 +1774,6 @@
       alert("File kalender pengingat berhasil diunduh! Buka file tersebut untuk menyimpannya ke kalender ponsel Anda.");
     }
 
-    // =========================================================================
-    // 10. RUANG KOMUNITAS & RUANG CURHAT PRIVAT
-    // =========================================================================
     async function postCommunityMessage(channel) {
       const inputEl = channel === "DISKUSI" ? document.getElementById("discussInput") : document.getElementById("curhatInput");
       const text = inputEl.value.trim();
@@ -1905,9 +1853,6 @@
         : `<p class="muted" style="font-size:13px;">Belum ada catatan curhat pribadi.</p>`;
     }
 
-    // =========================================================================
-    // 11. PANEL PEMBIMBING (PEMANTAUAN LANGSUNG, FOTO BUKTI & AKSES AKUN)
-    // =========================================================================
     async function loadTeacherMonitorData() {
       const tbody = document.getElementById("teacherMonitorBody");
       const msgContainer = document.getElementById("teacherMessagesList");
